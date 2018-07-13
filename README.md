@@ -11,7 +11,12 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 ## Run
 - Run the (base/choco_systemconfig_software.bat)[./base/choco_systemconfig_software.bat] file
 
-## devolopment
+## Devolopment
+### Setup
 - install [golang](https://golang.org/dl/)
-- `go run setup.go`
-
+- `$ go get github.com/akavel/rsrc`
+### Run
+- `$ go run setup.go`
+### Make FILE.syso
+The FILE.syso contains extra info about the program in this case it's will specifiy that the program needs to be ran with administrator writes
+- `$ rsrc -manifest APP.EXE.manifest -o FILE.syso`
