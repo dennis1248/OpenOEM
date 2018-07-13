@@ -6,4 +6,12 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 
 ## Requirements
 - Windows 10 x64 
-- Chocolatey  
+- Chocolatey *is not needed later*  
+
+## Run
+- Run the (base/choco_systemconfig_software.bat)[./base/choco_systemconfig_software.bat] file
+
+## devolopment
+- install [golang](https://golang.org/dl/)
+- `go run setup.go`
+
