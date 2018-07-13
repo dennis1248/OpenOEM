@@ -1,9 +1,1 @@
-choco install chromium
-choco install steam
-choco install origin
-choco install malwarebytes
-choco install gitkraken
-choco install atom
-choco install cpu-z
-choco install gpu-z
-choco install CUE
+choco install chromium steam origin malwarebytes gitkraken atom cpu-z gpu-z CUE
