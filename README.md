@@ -20,3 +20,5 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 ### Make FILE.syso
 The FILE.syso contains extra info about the program in this case it's will specifiy that the program needs to be ran with administrator writes
 - `$ rsrc -manifest APP.EXE.manifest -o FILE.syso`
+### Build program
+- `$ GOOS="windows" GOARCH="386" go build -o app.exe`
