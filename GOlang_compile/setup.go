@@ -62,7 +62,8 @@ func checkIfAdmin() bool {
 
 //check if chocolatey is installed or not:
 func installIfNeededChocolatey() error {
-	cmd := exec.Command("choco", "-v")
+	check := []string{"choco", "-v"}
+	cmd := exec.Command(check[0], check[1:]...)
 	_, err := cmd.CombinedOutput()
 	if err != nil {
 		// If chocolatey is not installed run the following:
@@ -91,20 +92,34 @@ func installIfNeededChocolatey() error {
 			return err
 		}
 
+		fmt.Println("Check if Chocolatey was installed successfull")
+		cmd = exec.Command(check[0], check[1:]...)
+		_, err = cmd.CombinedOutput()
+		if err != nil {
+			return err
+		}
+
 	} else {
 		fmt.Println("Chocolatey is already installed")
 	}
 	return nil
 }
 
+func installPackages() {
+	// install Chocolatey packages
+	fmt.Println("Insatlling programs")
+}
+
 func main() {
 	checkSYS()
 	fmt.Println("Starting setup...")
 	
-	// install choco
+	// do the Chocolatey stuff
 	err := installIfNeededChocolatey()
 	if err != nil {
 		fmt.Println("can't run Chocolatey installer, Error: \n", err)
+	} else {
+		installPackages()
 	}
 
 	fmt.Println("Dune!")
