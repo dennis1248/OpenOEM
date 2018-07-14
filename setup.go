@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt";
-	"runtime";
+	"fmt"
+	"runtime"
 	"os"
 )
 
@@ -33,6 +33,10 @@ func checkSYS() {
 func main() {
 	checkSYS()
 	fmt.Println("Starting setup...")
+	
 	// do stuff
 	fmt.Println("Dune!")
+
+	// force the program to run forever
+	fmt.Scanln()
 }

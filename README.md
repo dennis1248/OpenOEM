@@ -1,6 +1,5 @@
 # Automated Windows 10 configuration
 
-
 ## What is this?!
 It's still far from done but the ultimate goal is to be able to run an .exe (Or whatever works) and make it automatically install software and configure my fresh Windows 10 intallation.
 
@@ -15,10 +14,8 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 ### Setup
 - install [golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
+- Add `%USERPROFILE%\go\bin` to youre path ([how to](https://www.java.com/en/download/help/path.xml))
 ### Run
 - `$ go run setup.go`
-### Make FILE.syso
-The FILE.syso contains extra info about the program in this case it's will specifiy that the program needs to be ran with administrator writes
-- `$ rsrc -manifest APP.EXE.manifest -o FILE.syso`
 ### Build program
-- `$ GOOS="windows" GOARCH="386" go build -o app.exe`
+- execute `$ sh buildSetup.sh` using [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
