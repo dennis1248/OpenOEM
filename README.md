@@ -11,11 +11,12 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 - Run the (base/choco_systemconfig_software.bat)[./base/choco_systemconfig_software.bat] file
 
 ## Devolopment
+Note all devlopment is dune in the [GOlang_compile](./GOlang_compile) dir
 ### Setup
 - install [golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
 - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
-  Linux:
+- Linux: `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
 ### Run
 - `$ go run setup.go`
 ### Build program

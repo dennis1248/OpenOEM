@@ -1,11 +1,11 @@
 package main
 
 import (
+	"os"
+	"io"
 	"fmt"
 	"runtime"
-	"os"
 	"os/exec"
-	"io"
 	"net/http"
 )
 
@@ -37,7 +37,7 @@ func DownloadFile(filepath string, url string) error {
 }
 
 func checkSYS() {
-	// check youre system if everything is supported
+	// check youre system if everything is supported 
 	status := true
 	args := os.Args[1:]
 	skip := contains(args, "--skipChecks") || contains(args, "-s")
@@ -66,25 +66,26 @@ func installIfNeededChocolatey() error {
 	_, err := cmd.CombinedOutput()
 	if err != nil {
 		// If chocolatey is not installed run the following:
-		fmt.Println("Installing Chocolatey...")
+		fmt.Println("Installing Chocolatey [1 of 3] Downloading installer")
 		ChocoInstallFile := "chocoSetup.ps1"
 		err := DownloadFile(ChocoInstallFile, "https://chocolatey.org/install.ps1")
 		if err != nil {
 			return err
 		}
-		cmd1 := exec.Command(
-			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-			"-NoProfile",
-			"-InputFormat", "None",
-			"-ExecutionPolicy", "Bypass",
+		fmt.Println("Installing Chocolatey [2 of 3] adding go to user path")
+		cmd = exec.Command("setx", "path", "\"%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\\\"")
+		cmd.CombinedOutput()
+		fmt.Println("Installing Chocolatey [3 of 3] run installer")
+		cmd = exec.Command(
+			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
+			"-NoProfile", 
+			"-InputFormat", "None", 
+			"-ExecutionPolicy", "Bypass", 
 			"-file", ChocoInstallFile)
-		_, cmd1err := cmd1.CombinedOutput()
-		if cmd1err != nil {
-			return cmd1err
+		_, err = cmd.CombinedOutput()
+		if err != nil {
+			return err
 		}
-		fmt.Println("Installed choco... setting env variables")
-		// cmd2 := exec.Command("SET", "\"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin\"")
-		// if
 	} else {
 		fmt.Println("Chocolatey is already installed")
 	}
@@ -94,14 +95,14 @@ func installIfNeededChocolatey() error {
 func main() {
 	checkSYS()
 	fmt.Println("Starting setup...")
-
+	
 	// install choco
 	err := installIfNeededChocolatey()
 	if err != nil {
-		fmt.Println("can't run Chocolatey installer, Error: %s\n", err)
+		fmt.Println("can't run Chocolatey installer, Error: \n", err)
 	}
 
-	fmt.Println("Done!")
+	fmt.Println("Dune!")
 
 	// Prevent the application from closing
 	fmt.Scanln()
