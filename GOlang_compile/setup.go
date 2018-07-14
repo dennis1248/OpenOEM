@@ -66,16 +66,20 @@ func installIfNeededChocolatey() error {
 	_, err := cmd.CombinedOutput()
 	if err != nil {
 		// If chocolatey is not installed run the following:
-		fmt.Println("Installing Chocolatey [1 of 3] Downloading installer")
+
+		fmt.Println("Installing Chocolatey [1 of 2] Downloading installer")
 		ChocoInstallFile := "chocoSetup.ps1"
 		err := DownloadFile(ChocoInstallFile, "https://chocolatey.org/install.ps1")
 		if err != nil {
 			return err
 		}
-		fmt.Println("Installing Chocolatey [2 of 3] adding go to user path")
-		cmd = exec.Command("setx", "path", "\"%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\\\"")
-		cmd.CombinedOutput()
-		fmt.Println("Installing Chocolatey [3 of 3] run installer")
+
+		// fmt.Println("Installing Chocolatey [2 of 3] adding go to user path")
+		// skip this command for now because it might break the path variable :(
+		// cmd = exec.Command("cmd", "/c", "set", "PATH=" + os.Getenv("PATH") + ";%ALLUSERSPROFILE%\\chocolatey\\bin")
+		// cmd.CombinedOutput()
+
+		fmt.Println("Installing Chocolatey [2 of 2] run installer")
 		cmd = exec.Command(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
 			"-NoProfile", 
@@ -86,6 +90,7 @@ func installIfNeededChocolatey() error {
 		if err != nil {
 			return err
 		}
+
 	} else {
 		fmt.Println("Chocolatey is already installed")
 	}
