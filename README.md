@@ -4,7 +4,7 @@
 It's still far from done but the ultimate goal is to be able to run an .exe (Or whatever works) and make it automatically install software and configure my fresh Windows 10 intallation.
 
 ## Requirements
-- Windows 10 x64 
+- Windows 10 x64
 - Chocolatey *is not needed later*  
 
 ## Run
@@ -14,7 +14,8 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 ### Setup
 - install [golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
-- Add `%USERPROFILE%\go\bin` to youre path ([how to](https://www.java.com/en/download/help/path.xml))
+- Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
+  Linux:
 ### Run
 - `$ go run setup.go`
 ### Build program
