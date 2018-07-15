@@ -1,11 +1,11 @@
 package main
 
 import (
+	"os"
+	"io"
 	"fmt"
 	"runtime"
-	"os"
 	"os/exec"
-	"io"
 	"net/http"
 )
 
@@ -37,7 +37,7 @@ func DownloadFile(filepath string, url string) error {
 }
 
 func checkSYS() {
-	// check youre system if everything is supported
+	// check youre system if everything is supported 
 	status := true
 	args := os.Args[1:]
 	skip := contains(args, "--skipChecks") || contains(args, "-s")
@@ -62,46 +62,67 @@ func checkIfAdmin() bool {
 
 //check if chocolatey is installed or not:
 func installIfNeededChocolatey() error {
-	cmd := exec.Command("choco", "-v")
+	check := []string{"choco", "-v"}
+	cmd := exec.Command(check[0], check[1:]...)
 	_, err := cmd.CombinedOutput()
 	if err != nil {
 		// If chocolatey is not installed run the following:
-		fmt.Println("Installing Chocolatey...")
+
+		fmt.Println("Installing Chocolatey [1 of 2] Downloading installer")
 		ChocoInstallFile := "chocoSetup.ps1"
 		err := DownloadFile(ChocoInstallFile, "https://chocolatey.org/install.ps1")
 		if err != nil {
 			return err
 		}
-		cmd1 := exec.Command(
-			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-			"-NoProfile",
-			"-InputFormat", "None",
-			"-ExecutionPolicy", "Bypass",
+
+		// fmt.Println("Installing Chocolatey [2 of 3] adding go to user path")
+		// skip this command for now because it might break the path variable :(
+		// cmd = exec.Command("cmd", "/c", "set", "PATH=" + os.Getenv("PATH") + ";%ALLUSERSPROFILE%\\chocolatey\\bin")
+		// cmd.CombinedOutput()
+
+		fmt.Println("Installing Chocolatey [2 of 2] run installer")
+		cmd = exec.Command(
+			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
+			"-NoProfile", 
+			"-InputFormat", "None", 
+			"-ExecutionPolicy", "Bypass", 
 			"-file", ChocoInstallFile)
-		_, cmd1err := cmd1.CombinedOutput()
-		if cmd1err != nil {
-			return cmd1err
+		_, err = cmd.CombinedOutput()
+		if err != nil {
+			return err
 		}
-		fmt.Println("Installed choco... setting env variables")
-		// cmd2 := exec.Command("SET", "\"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin\"")
-		// if
+
+		fmt.Println("Check if Chocolatey was installed successfull")
+		cmd = exec.Command(check[0], check[1:]...)
+		_, err = cmd.CombinedOutput()
+		if err != nil {
+			return err
+		}
+
 	} else {
 		fmt.Println("Chocolatey is already installed")
 	}
 	return nil
 }
 
+func installPackages() {
+	// install Chocolatey packages
+	fmt.Println("Insatlling programs")
+}
+
 func main() {
 	checkSYS()
 	fmt.Println("Starting setup...")
-
-	// install choco
+	
+	// do the Chocolatey stuff
 	err := installIfNeededChocolatey()
 	if err != nil {
-		fmt.Println("can't run Chocolatey installer, Error: %s\n", err)
+		fmt.Println("can't run Chocolatey installer, Error: \n", err)
+	} else {
+		installPackages()
 	}
 
-	fmt.Println("Done!")
+	fmt.Println("Dune!")
 
 	// Prevent the application from closing
 	fmt.Scanln()
