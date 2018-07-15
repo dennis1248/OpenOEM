@@ -1,14 +1,10 @@
 # Automated Windows 10 configuration
 
-## What is this?!
+## Goal of this project?!
 It's still far from done but the ultimate goal is to be able to run an .exe (Or whatever works) and make it automatically install software and configure my fresh Windows 10 intallation.
 
 ## Requirements
 - Windows 10 x64
-- Chocolatey *is not needed later*  
-
-## Run
-- Run the (base/choco_systemconfig_software.bat)[./base/choco_systemconfig_software.bat] file
 
 ## Devolopment
 Note all devlopment is dune in the [GOlang_compile](./GOlang_compile) dir
@@ -21,3 +17,7 @@ Note all devlopment is dune in the [GOlang_compile](./GOlang_compile) dir
 - `$ go run setup.go`
 ### Build program
 - execute `$ sh buildSetup.sh` using [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+
+## For not devoloper
+This project is far from dune,  
+because of that there is no easy way yet to run this project with a simple file download and a dubbleclick on a .exe
