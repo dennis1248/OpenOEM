@@ -1,6 +1,6 @@
 # Automated Windows 10 configuration
 
-## Goal of this project?!
+## What we are trying to achieve
 The ultimate goal of this project is to be able to run an .exe (Or whatever works) and make it automatically install software and configure my fresh Windows 10 intallation.
 
 ## Requirements
