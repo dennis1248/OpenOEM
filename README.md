@@ -18,6 +18,5 @@ Note all devlopment is dune in the [GOlang_compile](./GOlang_compile) dir
 ### Build program
 - execute `$ sh buildSetup.sh` using [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
-## For not devoloper
-This project is far from dune,  
-because of that there is no easy way yet to run this project with a simple file download and a dubbleclick on a .exe
+## Disclaimer
+This is a personal project and it is FAR from done, in it's current state you can't simply download and run it.
