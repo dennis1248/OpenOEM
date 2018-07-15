@@ -40,7 +40,7 @@ func DownloadFile(filepath string, url string) error {
 }
 
 func checkSYS() {
-	// check youre system if everything is supported
+	// check if your system is supported
 	status := true
 	args := os.Args[1:]
 	skip := contains(args, "--skipChecks") || contains(args, "-s")
