@@ -1,14 +1,39 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
+	"strconv"
 )
+
+// types
+// a type pre defines what a object / array contains
+
+// Generated json types using: https://mholt.github.io/json-to-go/
+type Config struct {
+	ProgramsSlash string   `json:"// programs"`
+	Programs      []string `json:"programs"`
+}
+
+type Options struct {
+	PackageName string
+}
+
+func die() {
+	// used when the program needs to stop because of an error
+	fmt.Println("press any key to exit the program.")
+	// Prevent the application from closing
+	fmt.Scanln()
+	os.Exit(0)
+}
 
 func contains(arr []string, str string) bool {
 	// Check if a array contains value
@@ -53,10 +78,7 @@ func checkSYS() {
 	}
 	if !status && !skip {
 		fmt.Println("Use --skipChecks or -s to skip checks.")
-
-		// Prevent the application from closing
-		fmt.Scanln()
-		os.Exit(0)
+		die()
 	}
 }
 
@@ -117,26 +139,94 @@ func installIfNeededChocolatey() error {
 	return nil
 }
 
-func installPackages() {
+func findPackageJson(toCheck []string) (string, error) {
+	// this function returns the location of a found package file
+	// currently this only checks in this directory and one above
+	fmt.Println("Searching for config file")
+	toReturn := ""
+	for _, check := range toCheck {
+		fullPath, _ := filepath.Abs(check)
+		_, err := os.Stat(fullPath)
+		if err == nil {
+			toReturn = fullPath
+		}
+	}
+	if toReturn == "" {
+		return toReturn, errors.New("No " + getOptions().PackageName + " found in this directory")
+	}
+	return toReturn, nil
+}
+
+func openPackageJson(packageJsonFile string) (out Config, err error) {
+	// returns the output of the config file
+	fmt.Println("Using this config file:", packageJsonFile)
+	fileContent, err := ioutil.ReadFile(packageJsonFile)
+	if err != nil {
+		return Config{}, err
+	}
+	var data Config
+	json.Unmarshal([]byte(fileContent), &data)
+	return data, nil
+}
+
+func installPkgList(conf Config) {
+	// install all the programs
+	for i, program := range conf.Programs {
+		fmt.Println("Installing: [" + strconv.Itoa(i+1) + " of " + strconv.Itoa(len(conf.Programs)) + "] " + program)
+
+		// run command to install the program,
+		// dont forget to add
+		// choco feature enable -n=allowGlobalConfirmation
+		// otherwise it will fail
+
+		fmt.Println("Installed: " + program)
+	}
+}
+
+func installPackages() error {
 	// install Chocolatey packages
+
+	PackageName := getOptions().PackageName
+	packageJson, err := findPackageJson([]string{"./" + PackageName, "./../" + PackageName})
+	if err != nil {
+		return err
+	}
+
+	conf, err := openPackageJson(packageJson)
+	if err != nil {
+		return err
+	}
+
 	fmt.Println("Insatlling programs")
+	installPkgList(conf)
+
+	return nil
+}
+
+func getOptions() Options {
+	return Options{
+		PackageName: "config.json"}
 }
 
 func main() {
+
 	checkSYS()
 	fmt.Println("Starting setup...")
 
-	// do the Chocolatey stuff
+	// check if Chocolatey is installed, if not try to install it
 	err := installIfNeededChocolatey()
 	if err != nil {
 		fmt.Println("can't run Chocolatey installer, Error: \n", err)
-	} else {
-		installPackages()
+		die()
 	}
 
-	fmt.Println("Dune!, press any key to exit the program")
+	// install choco packages specified in the package file
+	err = installPackages()
+	if err != nil {
+		fmt.Println(err)
+		die()
+	}
 
-	// Prevent the application from closing
-	fmt.Scanln()
-	os.Exit(0)
+	fmt.Println("Dune!")
+	die()
 }
