@@ -14,3 +14,6 @@ Automated-Windows-10-configuration
 
 # the download installer from chocolatery
 chocoSetup.ps1
+
+# Use the config.json only as template
+config.json
