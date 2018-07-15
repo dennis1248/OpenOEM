@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -52,6 +53,9 @@ func checkSYS() {
 	}
 	if !status && !skip {
 		fmt.Println("Use --skipChecks or -s to skip checks.")
+
+		// Prevent the application from closing
+		fmt.Scanln()
 		os.Exit(0)
 	}
 }
@@ -62,12 +66,16 @@ func checkIfAdmin() bool {
 	return true
 }
 
-//check if chocolatey is installed or not:
-func installIfNeededChocolatey() error {
+func checkForChoco() error {
 	check := []string{"choco", "-v"}
 	cmd := exec.Command(check[0], check[1:]...)
 	_, err := cmd.CombinedOutput()
-	if err != nil {
+	return err
+}
+
+//check if chocolatey is installed or not:
+func installIfNeededChocolatey() error {
+	if checkForChoco() != nil {
 		// If chocolatey is not installed run the following:
 
 		fmt.Println("Installing Chocolatey [1 of 2] Downloading installer")
@@ -83,7 +91,7 @@ func installIfNeededChocolatey() error {
 		// cmd.CombinedOutput()
 
 		fmt.Println("Installing Chocolatey [2 of 2] run installer")
-		cmd = exec.Command(
+		cmd := exec.Command(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
 			"-NoProfile",
 			"-InputFormat", "None",
@@ -94,11 +102,13 @@ func installIfNeededChocolatey() error {
 			return err
 		}
 
-		fmt.Println("Check if Chocolatey was installed successfull")
-		cmd = exec.Command(check[0], check[1:]...)
-		_, err = cmd.CombinedOutput()
-		if err != nil {
-			return err
+		if checkForChoco() != nil {
+			return errors.New(`
+				chocolatery is installed but is not added to path 
+				try to restart the program or
+				run the installer yourself:
+				https://chocolatey.org/install
+			`)
 		}
 
 	} else {
@@ -124,8 +134,9 @@ func main() {
 		installPackages()
 	}
 
-	fmt.Println("Dune!")
+	fmt.Println("Dune!, press any key to exit the program")
 
 	// Prevent the application from closing
 	fmt.Scanln()
+	os.Exit(0)
 }
