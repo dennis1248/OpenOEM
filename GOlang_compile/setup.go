@@ -1,24 +1,26 @@
 package main
 
 import (
-	"os"
-	"io"
 	"fmt"
-	"runtime"
-	"os/exec"
+	"io"
 	"net/http"
+	"os"
+	"os/exec"
+	"runtime"
 )
 
 func contains(arr []string, str string) bool {
+	// Check if a array contains value
 	for _, a := range arr {
-		 if a == str {
-				return true
-		 }
+		if a == str {
+			return true
+		}
 	}
 	return false
 }
 
 func DownloadFile(filepath string, url string) error {
+	// Download a file from the internet
 	out, err := os.Create(filepath)
 	if err != nil {
 		return err
@@ -37,7 +39,7 @@ func DownloadFile(filepath string, url string) error {
 }
 
 func checkSYS() {
-	// check youre system if everything is supported 
+	// check youre system if everything is supported
 	status := true
 	args := os.Args[1:]
 	skip := contains(args, "--skipChecks") || contains(args, "-s")
@@ -82,10 +84,10 @@ func installIfNeededChocolatey() error {
 
 		fmt.Println("Installing Chocolatey [2 of 2] run installer")
 		cmd = exec.Command(
-			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
-			"-NoProfile", 
-			"-InputFormat", "None", 
-			"-ExecutionPolicy", "Bypass", 
+			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+			"-NoProfile",
+			"-InputFormat", "None",
+			"-ExecutionPolicy", "Bypass",
 			"-file", ChocoInstallFile)
 		_, err = cmd.CombinedOutput()
 		if err != nil {
@@ -113,7 +115,7 @@ func installPackages() {
 func main() {
 	checkSYS()
 	fmt.Println("Starting setup...")
-	
+
 	// do the Chocolatey stuff
 	err := installIfNeededChocolatey()
 	if err != nil {
