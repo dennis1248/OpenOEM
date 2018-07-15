@@ -14,7 +14,7 @@ It's still far from done but the ultimate goal is to be able to run an .exe (Or 
 ### Setup
 - install [golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
-- Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
+- Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))  
   Linux:
 ### Run
 - `$ go run setup.go`
