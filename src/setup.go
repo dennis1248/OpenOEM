@@ -23,20 +23,21 @@ type Config struct {
 	Programs      []string `json:"programs"`
 }
 
+// Type structure to bind to config.
 type Options struct {
 	PackageName string
 }
 
+// used when the program needs to stop because of an error
 func die() {
-	// used when the program needs to stop because of an error
 	fmt.Println("press any key to exit the program.")
 	// Prevent the application from closing
 	fmt.Scanln()
 	os.Exit(0)
 }
 
+// Check if a array contains value
 func contains(arr []string, str string) bool {
-	// Check if a array contains value
 	for _, a := range arr {
 		if a == str {
 			return true
@@ -45,8 +46,8 @@ func contains(arr []string, str string) bool {
 	return false
 }
 
+// Download a file from the internet
 func DownloadFile(filepath string, url string) error {
-	// Download a file from the internet
 	out, err := os.Create(filepath)
 	if err != nil {
 		return err
