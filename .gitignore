@@ -1,11 +1,14 @@
 
+# Build dir
+build/*
+
 # windows meta data file
 FILE.syso
 
 # the setup file
 setup.exe
 
-# this file gets created when the setup.exe is still running and someone runs the build process
+# this file gets created when the setup.exe is running
 setup.exe~
 
 # if you just type `go build` on linux and on windows
@@ -15,5 +18,8 @@ Automated-Windows-10-configuration
 # the download installer from chocolatery
 chocoSetup.ps1
 
-# Use the config.json only as template
+# This config file can be changed and is for devlopment
 config.json
+
+# This config file is for release and cannot be changed 
+config.example.json
