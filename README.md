@@ -6,6 +6,14 @@ The ultimate goal of this project is to be able to run an .exe (Or whatever work
 ## Requirements
 - Windows 10 x64
 
+## Use the program
+**!! Disclaimer !!**  
+**This is a personal project and it is FAR from done, in it's current state you can't simply download and run it.**
+- Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
+- Unpack the files
+- Eddit the config.json
+- dubble click the setup.exe
+
 ## Devolopment
 Note: all devlopment is dune in the [src](./src) dir  
 ### Setup
@@ -19,6 +27,3 @@ Note: all devlopment is dune in the [src](./src) dir
 ### Make a relaese
 NOTE: the release does NOT use the config.json, it uses the config.example.json as config.json because then you can test the build with a modifyied config.json and don't have to worry about releaseing a wrong config 
 - run `$ sh buildRelease.sh`
-
-## Disclaimer
-This is a personal project and it is FAR from done, in it's current state you can't simply download and run it.
