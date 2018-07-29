@@ -3,10 +3,10 @@
 # Use this package when doing devolopment and just want to test the application
 
 # Create a manifest file for windows
-rsrc -manifest APP.EXE.manifest -o FILE.syso
+rsrc -manifest APP.EXE.manifest -o ../FILE.syso
 
 # Create the program
-GOOS="windows" GOARCH="386" go build -o setup.exe
+GOOS="windows" GOARCH="386" go build -o setup.exe ..
 
 # Create a build dir
 mkdir ../build -p
@@ -18,4 +18,4 @@ cp setup.exe ../build/
 cp -f ../config.json ../build/config.json
 
 # cleanup
-rm -f setup.exe FILE.syso setup.exe~
+rm -f setup.exe ../FILE.syso setup.exe~

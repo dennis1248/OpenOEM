@@ -1,0 +1,7 @@
+{
+  "// programs": "A list of programs to install using chocolatey, https://chocolatey.org/",
+  "programs": [
+    "origin",
+    "steam"
+  ]
+}

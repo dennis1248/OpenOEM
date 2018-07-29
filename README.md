@@ -15,15 +15,23 @@ The ultimate goal of this project is to be able to run an .exe (Or whatever work
 - dubble click the setup.exe
 
 ## Devolopment
-Note: all devlopment is done in the [src](./src) dir  
+### NOTES:
+Kinda important to read before doing anything
+- Do **NOT** use git clone because that will give errors, [why](https://stackoverflow.com/questions/26942150/importing-go-files-in-same-folder)!!
+- You can't use cmd and powershell because of the linux style script files, use [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 ### Setup
 - install [golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
-- Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
-- Linux: `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
+- Add GOPATH to the system variables
+  - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
+  - Linux: Execute `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
+- `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use youre repo if you have forked the repo
+- In the output of the last command will be the direcotry to where the project is cloned to
 ### Build and run the program
-- execute `$ sh buildSetup.sh` using [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- Open the setup.exe file inside the build dir
+- `$ cd scripts`
+- execute `$ sh buildDev.sh` (The output exe file wil run automaticly look in task bar for the adminministrator tile)
+- If you are on a linux system use: `$ sh buildRelease.sh`
 ### Make a release
 NOTE: The release does NOT use the config.json, it uses the config.example.json as config.json so you can test the build with a modified config.json without having to worry about releasing a wrong config.
-- run `$ sh buildRelease.sh`
+- `$ cd scripts`
+- `$ sh buildRelease.sh`
