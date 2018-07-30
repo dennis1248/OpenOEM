@@ -31,7 +31,7 @@ Kinda important to read before doing anything
 ### Compile the code
 `$ cd scripts`
 Exec | Output | Note
----- | ------ | ----
+--- | --- | ---
 `$ sh buildSetup.sh` | Build just the setup.exe file for devlopment | x
 `$ sh buildDev.sh` | Build the program and execute | x
 `$ sh buildRelease.sh` | Build a release setup.exe file | this does NOT use the config.json, it uses the config.example.json as config.json so you can test the build with a modified config.json without having to worry about releasing a wrong config.
