@@ -4,8 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"os/exec"
+	"strconv"
 
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/options"
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
 )
 
 // this file contains all the chocolatery functions
@@ -58,5 +62,39 @@ func InstallIfNeededChocolatey() error {
 	} else {
 		fmt.Println("Chocolatey is already installed")
 	}
+	return nil
+}
+
+func InstallPkgList(conf types.Config) {
+	// install all the programs
+	for i, program := range conf.Programs {
+		fmt.Println("Installing: [" + strconv.Itoa(i+1) + " of " + strconv.Itoa(len(conf.Programs)) + "] " + program)
+
+		// run command to install the program,
+		// dont forget to add
+		// choco feature enable -n=allowGlobalConfirmation
+		// otherwise it will fail
+
+		fmt.Println("Installed: " + program)
+	}
+}
+
+func InstallPackages() error {
+	// install Chocolatey packages
+
+	PackageName := options.GetOptions().PackageName
+	packageJson, err := fs.FindPackageJson([]string{"./" + PackageName, "./../" + PackageName})
+	if err != nil {
+		return err
+	}
+
+	conf, err := fs.OpenPackageJson(packageJson)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Insatlling programs")
+	InstallPkgList(conf)
+
 	return nil
 }
