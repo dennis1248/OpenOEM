@@ -29,7 +29,7 @@ Kinda important to read before doing anything
 - `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use youre repo if you have forked the repo
 - In the output of the last command will be the direcotry to where the project is cloned to
 ### Compile the code
-`$ cd scripts`
+`$ cd scripts`  
 Exec | Output | Note
 --- | --- | ---
 `$ sh buildSetup.sh` | Build just the setup.exe file for devlopment | x
