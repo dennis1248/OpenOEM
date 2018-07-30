@@ -30,6 +30,7 @@ Kinda important to read before doing anything
 - In the output of the last command will be the direcotry to where the project is cloned to
 ### Compile the code
 make sure you are inside the scripts folder: `$ cd scripts`  
+
 Exec | Output
 --- | ---
 `$ sh buildSetup.sh` | Build just the setup.exe file for devlopment
