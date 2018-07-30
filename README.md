@@ -29,9 +29,11 @@ Kinda important to read before doing anything
 - `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use youre repo if you have forked the repo
 - In the output of the last command will be the direcotry to where the project is cloned to
 ### Compile the code
-`$ cd scripts`  
-Exec | Output | Note
---- | --- | ---
-`$ sh buildSetup.sh` | Build just the setup.exe file for devlopment | x
-`$ sh buildDev.sh` | Build the program and execute | x
-`$ sh buildRelease.sh` | Build a release setup.exe file | this does NOT use the config.json, it uses the config.example.json as config.json so you can test the build with a modified config.json without having to worry about releasing a wrong config.
+make sure you are inside the scripts folder: `$ cd scripts`  
+Exec | Output
+--- | ---
+`$ sh buildSetup.sh` | Build just the setup.exe file for devlopment
+`$ sh buildDev.sh` | Build the program and execute
+`$ sh buildRelease.sh` | Build a release setup.exe file
+  
+Note: the buildRelease does NOT use the config.json, it uses the config.example.json as config.json so you can test the build with a modified config.json without having to worry about releasing a wrong config.
