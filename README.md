@@ -26,7 +26,7 @@ Please carefully read the following before you start playing around with it;
 - Add GOPATH to the system variables
   - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
   - Linux: Execute `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
-- `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use youre repo if you have forked the repo
+- `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use your repo if you have forked this project
 - The output of the last command will contain the location of the directory where the project is cloned to
 ### Compile the code
 make sure you are inside the scripts folder: `$ cd scripts`  
