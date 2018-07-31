@@ -4,7 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"os/exec"
+	"regexp"
 	"strconv"
+	"strings"
 
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
@@ -67,16 +69,74 @@ func InstallIfNeededChocolatey() error {
 
 func InstallPkgList(conf types.Config) {
 	// install all the programs
+
+	// setting flags
+	fmt.Println("Setting chocolatery settings")
+	cmd := exec.Command(
+		"choco",
+		"feature", "enable", "-n=allowGlobalConfirmation")
+	_, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Println("Can't enable chocolatey feature, Error:", err)
+		funs.Die()
+	}
+
 	for i, program := range conf.Programs {
 		fmt.Println("Installing: [" + strconv.Itoa(i+1) + " of " + strconv.Itoa(len(conf.Programs)) + "] " + program)
 
-		// run command to install the program,
-		// dont forget to add
-		// choco feature enable -n=allowGlobalConfirmation
-		// otherwise it will fail
+		// run package checks
+		err = PkgChecks(program)
+		if err == nil {
+			// Install the package
 
-		fmt.Println("Installed: " + program)
+			cmd := exec.Command(
+				"choco",
+				"install", program,
+				"--yes", "--force")
+			_, err := cmd.CombinedOutput()
+			if err != nil {
+				fmt.Println("can't install:", program, "Reason:", err)
+			} else {
+				fmt.Println("Installed: " + program)
+			}
+		} else {
+			fmt.Println("skipping:", program, err)
+		}
 	}
+}
+
+func PkgChecks(pkg string) error {
+	// check if the package exsist in the choco repos
+	if len(pkg) == 0 {
+		return errors.New("package name can't be nothing")
+	}
+	// cehck if the package exsist online
+	cmd := exec.Command(
+		"choco",
+		"search", pkg)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return err
+	}
+	r, _ := regexp.Compile(strings.ToLower(pkg))
+	check := r.MatchString(strings.ToLower(string(output)))
+	if !check {
+		return errors.New("Pacakge not found")
+	}
+	// check if the package is already installed
+	cmd = exec.Command(
+		"choco",
+		"search", "--lo", pkg)
+	output, err = cmd.CombinedOutput()
+	if err != nil {
+		return err
+	}
+	r, _ = regexp.Compile(strings.ToLower(pkg))
+	check = r.MatchString(strings.ToLower(string(output)))
+	if check {
+		return errors.New("Pacakge already installed")
+	}
+	return nil
 }
 
 func InstallPackages() error {
