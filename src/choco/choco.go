@@ -40,7 +40,7 @@ func InstallIfNeededChocolatey() error {
 		// cmd = exec.Command("cmd", "/c", "set", "PATH=" + os.Getenv("PATH") + ";%ALLUSERSPROFILE%\\chocolatey\\bin")
 		// cmd.CombinedOutput()
 
-		fmt.Println("Installing Chocolatey [2 of 2] run installer")
+		fmt.Println("Installing Chocolatey [2 of 2] running installer")
 		cmd := exec.Command(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
 			"-NoProfile",
@@ -54,9 +54,9 @@ func InstallIfNeededChocolatey() error {
 
 		if CheckForChoco() != nil {
 			return errors.New(`
-				chocolatery is installed but is not added to path 
-				try to restart the program or
-				run the installer yourself:
+				Chocolatey is installed but is not added to path 
+				try restarting the program or
+				run the installer manually:
 				https://chocolatey.org/install
 			`)
 		}
@@ -71,13 +71,13 @@ func InstallPkgList(conf types.Config) {
 	// install all the programs
 
 	// setting flags
-	fmt.Println("Setting chocolatery settings")
+	fmt.Println("Configuring Chocolatey")
 	cmd := exec.Command(
 		"choco",
 		"feature", "enable", "-n=allowGlobalConfirmation")
 	_, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Println("Can't enable chocolatey feature, Error:", err)
+		fmt.Println("Unable to enable Chocolatey feature, Error:", err)
 		funs.Die()
 	}
 
@@ -108,7 +108,7 @@ func InstallPkgList(conf types.Config) {
 func PkgChecks(pkg string) error {
 	// check if the package exsist in the choco repos
 	if len(pkg) == 0 {
-		return errors.New("package name can't be nothing")
+		return errors.New("package name must not be blank")
 	}
 	// cehck if the package exsist online
 	cmd := exec.Command(
@@ -134,7 +134,7 @@ func PkgChecks(pkg string) error {
 	r, _ = regexp.Compile(strings.ToLower(pkg))
 	check = r.MatchString(strings.ToLower(string(output)))
 	if check {
-		return errors.New("Pacakge already installed")
+		return errors.New("Package is already installed")
 	}
 	return nil
 }
@@ -153,7 +153,7 @@ func InstallPackages() error {
 		return err
 	}
 
-	fmt.Println("Insatlling programs")
+	fmt.Println("Installing applications")
 	InstallPkgList(conf)
 
 	return nil
