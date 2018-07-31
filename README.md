@@ -1,14 +1,19 @@
 # Automated Windows 10 configuration
 
 ## What we are trying to achieve
-The ultimate goal of this project is to be able to run an .exe (Or whatever works) and make it automatically install software and configure your fresh Windows 10 intallation.
+The ultimate goal of this project is to be able to run an setup.exe with a config file and make it automatically install software and configure your fresh Windows 10 intallation.  
+
+## What is working
+- :heavy_check_mark: Install programs from chocolatery 
+- :x: Configure windows / programs
+- :x: The software is Stable
 
 ## Requirements
 - Windows 10 x64  
 
 ## Use the program
 **!! Disclaimer !!**  
-**This is a personal project and it is FAR from done, in it's current state you can't simply download and run it.**
+**This is a (for now) personal project and it is far from done, the project in it's current state is not tested.**
 - Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
 - Unpack the files
 - Edit the config.json
