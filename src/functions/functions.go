@@ -12,7 +12,7 @@ import (
 
 // used when the program needs to stop because of an error
 func Die() {
-	fmt.Println("press any key to exit the program.")
+	fmt.Println("press any key (besides the space bar..) to exit the application")
 	// Prevent the application from closing
 	fmt.Scanln()
 	os.Exit(0)
@@ -40,14 +40,14 @@ func CheckSYS() {
 	args := os.Args[1:]
 	skip := Contains(args, "--skipChecks") || Contains(args, "-s")
 	if runtime.GOOS != "windows" {
-		fmt.Println("This applications appears to be running on a non Windows system.")
+		fmt.Println("This applications appears to be running on a non-Windows system")
 		status = false
 	}
 	if !checkIfAdmin() {
-		fmt.Println("This application requires administative rights to run.")
+		fmt.Println("This application requires administative rights to run")
 	}
 	if !status && !skip {
-		fmt.Println("Use --skipChecks or -s to skip checks.")
+		fmt.Println("Use --skipChecks or -s to skip checks")
 		Die()
 	}
 }
