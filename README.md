@@ -13,7 +13,7 @@ The ultimate goal of this project is to be able to run an setup.exe with a confi
 
 ## Use the program
 **!! Disclaimer !!**  
-**This is a (for now) personal project and it is far from done, the project in it's current state is not tested.**
+**This is a (for now) and it is not 100% fully tested.**
 - Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
 - Unpack the files
 - Edit the config.json
