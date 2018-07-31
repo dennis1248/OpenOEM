@@ -26,7 +26,7 @@ Please carefully read the following before you start playing around with it;
 - You can't use cmd and powershell because of the linux style script files, use [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 - Do not store files or moddify files in the build directory because then you will likely end up breaking everything and files might be overwritten
 ### Setup
-- install [golang](https://golang.org/dl/)
+- install [Golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
 - Add GOPATH to the system variables
   - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
