@@ -106,10 +106,12 @@ func InstallPkgList(conf types.Config) {
 }
 
 func PkgChecks(pkg string) error {
+
 	// check if the package exists in the Chocolatey repos
 	if len(pkg) == 0 {
 		return errors.New("Package name must not be blank")
 	}
+
 	// check if the package exists in the Chocolatey repos
 	cmd := exec.Command(
 		"choco",
@@ -118,11 +120,26 @@ func PkgChecks(pkg string) error {
 	if err != nil {
 		return err
 	}
+
 	r, _ := regexp.Compile(strings.ToLower(pkg) + "\\s")
 	check := r.MatchString(strings.ToLower(string(output)))
+	if !check && strings.Contains(pkg, "-") {
+		// replace "-" with "" because sometimes the "-" breaks choco search
+		cmd = exec.Command(
+			"choco",
+			"search", strings.Replace(pkg, "-", "", -1))
+		output, err = cmd.CombinedOutput()
+		if err != nil {
+			return err
+		}
+		r, _ = regexp.Compile(strings.ToLower(pkg) + "\\s")
+		check = r.MatchString(strings.ToLower(string(output)))
+	}
+
 	if !check {
 		return errors.New("Package not found, check the availability and proper naming of the package at https://chocolatey.org/packages")
 	}
+
 	// check if the package is already installed
 	cmd = exec.Command(
 		"choco",
@@ -131,11 +148,13 @@ func PkgChecks(pkg string) error {
 	if err != nil {
 		return err
 	}
+
 	r, _ = regexp.Compile(strings.ToLower(pkg) + "\\s")
 	check = r.MatchString(strings.ToLower(string(output)))
 	if check {
 		return errors.New("Package is already installed")
 	}
+
 	return nil
 }
 

@@ -12,7 +12,7 @@ import (
 
 // used when the program needs to stop because of an error
 func Die() {
-	fmt.Println("press any key (besides the space bar..) to exit the application")
+	fmt.Println("press enter to exit the application")
 	// Prevent the application from closing
 	fmt.Scanln()
 	os.Exit(0)
