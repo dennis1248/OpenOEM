@@ -118,7 +118,7 @@ func PkgChecks(pkg string) error {
 	if err != nil {
 		return err
 	}
-	r, _ := regexp.Compile(strings.ToLower(pkg))
+	r, _ := regexp.Compile(strings.ToLower(pkg) + "\\s")
 	check := r.MatchString(strings.ToLower(string(output)))
 	if !check {
 		return errors.New("Package not found, check the availability and proper naming of the package at https://chocolatey.org/packages")
@@ -131,7 +131,7 @@ func PkgChecks(pkg string) error {
 	if err != nil {
 		return err
 	}
-	r, _ = regexp.Compile(strings.ToLower(pkg))
+	r, _ = regexp.Compile(strings.ToLower(pkg) + "\\s")
 	check = r.MatchString(strings.ToLower(string(output)))
 	if check {
 		return errors.New("Package is already installed")
