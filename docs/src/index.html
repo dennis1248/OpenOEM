@@ -22,9 +22,16 @@
       <a href="#readme">Readme</a>
       <a href="#generator">Generator</a>
     </div>
-    <div id="readme" hidden>Loading...</div>
+    <div id="readme" hidden>Loading readme...</div>
     <div id="generator" hidden>
-      Generate here a config.json file
+      <h2>Generate a installer + config here</h2>
+      <p>Programs to install</p>
+      <div class="search">
+        <div class="input">
+          <input placeholder="search for a package" class="searchInputBox" type="text" onkeydown="searchPKG()" onkeyup="searchPKG()">
+        </div>
+        <div class="results"></div>
+      </div>
     </div>
   </div>
   <div></div>
