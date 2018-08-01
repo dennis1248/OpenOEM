@@ -6,14 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="./icons/icon.ico">
   <link rel="stylesheet" href="./style/home.css">
-  <title>Automated-Windows-10-configuration</title>
+  <link rel="preload" as="script" href="./scripts/snarkdown.js">
+  <link rel="preload" as="script" href="./scripts/unfetch.js">
+  <link rel="preload" as="script" href="./scripts/script.js">
+  <title>Automated Windows 10 configuration</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
   <div class="header">
-    <img src="./icons/icon-small.png" alt="logo">
-    <h1>Automated-Windows-10-configuration</h1>
+    <div class="title">
+      <img src="./icons/icon-small.png" alt="logo">
+      <h1>Automated Windows 10 configuration</h1>
+    </div>
+    <div class="tabs">
+      <a href="#readme">Readme</a>
+      <a href="#generator">Generator</a>
+    </div>
+    <div id="readme" hidden>Loading...</div>
+    <div id="generator" hidden>
+      Generate here a config.json file
+    </div>
   </div>
-  
+  <div></div>
+  <script src="./scripts/snarkdown.js"></script>
+  <script src="./scripts/unfetch.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
