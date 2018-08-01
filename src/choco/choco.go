@@ -28,7 +28,7 @@ func InstallIfNeededChocolatey() error {
 	if CheckForChoco() != nil {
 		// If chocolatey is not installed run the following:
 
-		fmt.Println("Installing Chocolatey [1 of 2] Downloading installer")
+		fmt.Println("Installing Chocolatey [1 of 2] Downloading installer..")
 		ChocoInstallFile := "chocoSetup.ps1"
 		err := funs.DownloadFile(ChocoInstallFile, "https://chocolatey.org/install.ps1")
 		if err != nil {
@@ -40,7 +40,7 @@ func InstallIfNeededChocolatey() error {
 		// cmd = exec.Command("cmd", "/c", "set", "PATH=" + os.Getenv("PATH") + ";%ALLUSERSPROFILE%\\chocolatey\\bin")
 		// cmd.CombinedOutput()
 
-		fmt.Println("Installing Chocolatey [2 of 2] running installer")
+		fmt.Println("Installing Chocolatey [2 of 2] Running installer..")
 		cmd := exec.Command(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
 			"-NoProfile",
@@ -71,7 +71,7 @@ func InstallPkgList(conf types.Config) {
 	// install all the programs
 
 	// setting flags
-	fmt.Println("Configuring Chocolatey")
+	fmt.Println("Configuring Chocolatey..")
 	cmd := exec.Command(
 		"choco",
 		"feature", "enable", "-n=allowGlobalConfirmation")
@@ -95,22 +95,22 @@ func InstallPkgList(conf types.Config) {
 				"--yes", "--force")
 			_, err := cmd.CombinedOutput()
 			if err != nil {
-				fmt.Println("can't install:", program, "Reason:", err)
+				fmt.Println("Unable to install:", program, "Reason:", err)
 			} else {
 				fmt.Println("Installed: " + program)
 			}
 		} else {
-			fmt.Println("skipping:", program, err)
+			fmt.Println("Skipping:", program, err)
 		}
 	}
 }
 
 func PkgChecks(pkg string) error {
-	// check if the package exsist in the choco repos
+	// check if the package exists in the Chocolatey repos
 	if len(pkg) == 0 {
-		return errors.New("package name must not be blank")
+		return errors.New("Package name must not be blank")
 	}
-	// cehck if the package exsist online
+	// check if the package exists in the Chocolatey repos
 	cmd := exec.Command(
 		"choco",
 		"search", pkg)
@@ -121,7 +121,7 @@ func PkgChecks(pkg string) error {
 	r, _ := regexp.Compile(strings.ToLower(pkg))
 	check := r.MatchString(strings.ToLower(string(output)))
 	if !check {
-		return errors.New("Pacakge not found")
+		return errors.New("Package not found, check the availability and proper naming of the package at https://chocolatey.org/")
 	}
 	// check if the package is already installed
 	cmd = exec.Command(
@@ -153,7 +153,7 @@ func InstallPackages() error {
 		return err
 	}
 
-	fmt.Println("Installing applications")
+	fmt.Println("Installing packages..")
 	InstallPkgList(conf)
 
 	return nil
