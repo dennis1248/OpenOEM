@@ -186,7 +186,16 @@ function createZip() {
   unfetch('https://api.github.com/repos/dennis1248/Automated-Windows-10-configuration/releases')
     .then(function(data) { return data.json() })
     .then(function(output) {
-      return unfetch('/download/' + encodeURIComponent(output[0].assets[0].browser_download_url.replace(/http?s:\/\/.{0,}\/.{0,}\/releases\/download\//ig,'')))
+      return unfetch(
+        '/download/' + 
+        encodeURIComponent(
+          output[0]
+          .assets[0]
+          .browser_download_url
+          .replace(/http?s:\/\/.{0,}\/.{0,}\/releases\/download\//ig,'')
+          .replace('/', '|||')
+        )
+      )
     })
     .then(function(data) {return data.blob()})
     .then(function(data) {return new JSZip().loadAsync(data)})

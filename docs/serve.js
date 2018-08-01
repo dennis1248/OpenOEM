@@ -34,7 +34,7 @@ app.get('/search/:query', (req, res) => {
 
 // download a package from github
 app.get('/download/:query', (req, res) => {
-  let query = req.params.query
+  let query = req.params.query.replace('|||', '/')
   if (query.indexOf('..') == -1 && !query.replace(/\s/g, '').startsWith('/')) {
     fetch('https://github.com/dennis1248/Automated-Windows-10-configuration/releases/download/' + query.replace(/\.\./g, ''))
     .then(r => r.buffer())
