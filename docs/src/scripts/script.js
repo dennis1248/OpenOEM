@@ -98,6 +98,18 @@ function newSearch () {
 function renderPkgList() {
   let results = document.createElement('div')
   results.classList = 'choosen'
+  
+  let nextBtn = document.querySelector("#generator .options .nextBtn")
+  if (PKGs.length > 0) {
+    let info = document.createElement('p')
+    info.classList = 'info'
+    info.innerText = 'Programs that will be included in the config file:'
+    results.appendChild(info)
+    nextBtn.disabled = false
+  } else {
+    nextBtn.disabled = true
+  }
+  
   for (let i = 0; i < PKGs.length; i++) {
     const el = PKGs[i]
     let result = document.createElement('div')
@@ -109,6 +121,7 @@ function renderPkgList() {
     add.innerText = 'Remove'
     add.onclick = function() {
       PKGs.splice(i, 1)
+      renderPkgList()
     }
     result.appendChild(add)
     results.appendChild(result)
@@ -132,6 +145,13 @@ function reRender(pointer) {
   
   let results = document.createElement('div')
   results.classList = 'results'
+
+  if (data.length > 0) {
+    let info = document.createElement('p')
+    info.classList = 'info'
+    info.innerText = 'Found packages:'
+    results.appendChild(info)
+  }
 
   for (let i = 0; i < data.length; i++) {
     const el = data[i]
@@ -161,5 +181,35 @@ let searchPKG = function() {
   newSearch()
 }
 
+function createZip() {
+  // PKGs
+  log('creating zip file')
+}
+
+let currentStep = 1
+let totalSteps = 2
+let nextStep = function() {
+  currentStep ++
+  for (let index = 0; index < totalSteps; index++) {
+    let step = index + 1
+    document.querySelector('.step' + step).hidden = currentStep != step
+  }
+  if (currentStep == totalSteps) createZip()
+}
+
 setup()
 let searchInputBox = undefined
+
+
+unfetch('https://api.github.com/repos/dennis1248/Automated-Windows-10-configuration/releases')
+  .then(function(data) { return data.json() })
+  .then(function(output) {
+    log(output[0])
+    return fetch(output[0].assets[0].browser_download_url, {mode: 'no-cors'})
+  })
+  .then(function(data) {
+    return data.blob()
+  })
+  .then(function(data) {
+    log(data)
+  })

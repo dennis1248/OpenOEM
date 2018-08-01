@@ -6,9 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="./icons/icon.ico">
   <link rel="stylesheet" href="./style/home.css">
-  <link rel="preload" as="script" href="./scripts/snarkdown.js">
-  <link rel="preload" as="script" href="./scripts/unfetch.js">
-  <link rel="preload" as="script" href="./scripts/script.js">
   <title>Automated Windows 10 configuration</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
@@ -22,22 +19,28 @@
       <a href="#readme">Readme</a>
       <a href="#generator">Generator</a>
     </div>
-    <div id="readme" hidden>Loading readme...</div>
-    <div id="generator" hidden>
-      <h2>Generate a installer + config here</h2>
-      <p>Programs to install</p>
+  </div>
+  <div id="readme" hidden>Loading readme...</div>
+  <div id="generator" hidden>
+    <h2>Generate a installer + config here</h2>
+    <div class="step step1">
       <div class="choosen"></div>
       <div class="search">
+        <p>Search for programs to install</p>
         <div class="input">
           <input placeholder="search for a package" class="searchInputBox" type="text" onkeydown="searchPKG()" onkeyup="searchPKG()">
         </div>
         <div class="results"></div>
       </div>
+      <div class="options"><button disabled class="nextBtn" onclick="nextStep()">Create config + installer</button></div>
+    </div>
+    <div class="step step2" hidden>
+      Creating a custom zip file with a setup and config.
     </div>
   </div>
-  <div></div>
   <script src="./scripts/snarkdown.js"></script>
   <script src="./scripts/unfetch.js"></script>
+  <script src="./scripts/jszip.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
