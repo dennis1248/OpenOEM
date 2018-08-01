@@ -14,7 +14,7 @@ if ! [ -x "$(command -v rsrc)" ]; then
 fi
 
 # Create a manifest file for windows
-rsrc -manifest APP.EXE.manifest -o ../FILE.syso
+rsrc -manifest APP.EXE.manifest -ico ../src/icon.ico -o ../FILE.syso
 
 # Create the program
 GOOS="windows" GOARCH="386" go build -o setup.exe ..

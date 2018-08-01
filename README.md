@@ -1,4 +1,5 @@
 # Automated Windows 10 configuration
+![Project logo](./src/icon-small.png?raw=true "Project logo")
 
 ## What we are trying to achieve
 The ultimate goal of this project is to be able to run an setup.exe with a config file and make it automatically install software and configure your fresh Windows 10 intallation.  
