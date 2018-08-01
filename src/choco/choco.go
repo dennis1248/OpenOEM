@@ -55,7 +55,7 @@ func InstallIfNeededChocolatey() error {
 		if CheckForChoco() != nil {
 			return errors.New(`
 				Chocolatey is installed but is not added to path 
-				try restarting the program or
+				try running the program again or
 				run the installer manually:
 				https://chocolatey.org/install
 			`)
