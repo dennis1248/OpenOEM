@@ -24,7 +24,7 @@ The ultimate goal of this project is to be able to run a setup.exe with a config
 Please carefully read the following before you start playing around with it;
 - Do not use git clone because that will give errors, [why](https://stackoverflow.com/questions/26942150/importing-go-files-in-same-folder)
 -  As-is it can only be compiled on a Linux-based client, use [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- Do not store files or moddify files in the build directory because then you will likely end up breaking everything and files might be overwritten
+- Do not store files or modify files in the build directory because then you will likely end up breaking everything and files might be overwritten
 ### Setup
 - install [Golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
