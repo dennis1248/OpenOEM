@@ -15,10 +15,12 @@ The ultimate goal of this project is to be able to run a setup.exe with a config
 ## Use the program
 **!! Disclaimer !!**  
 **This application has not been properly tested yet, you could encounter bugs and unexpected behaviour.**
+- Use the [winconfig tool](https://winconfig.masterracegeeks.eu/#generator)
+**OR**
 - Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
 - Unpack the files
 - Edit the config.json
-- Double click the setup.exe
+- Double click the setup.exe or save it for later use :)
 
 ## Devolopment
 ### NOTES
