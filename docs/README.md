@@ -1,5 +1,5 @@
 # Site
-The full https://dennis1248.github.io/Automated-Windows-10-configuration/ site
+The full https://winconfig.masterracegeeks.eu/ site made on top of [nodejs](https://nodejs.org/en/)
 
 ## Setup web server
 - Install [nodejs](https://nodejs.org/en/)
