@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dennis1248/Automated-Windows-10-configuration/tree/master/docs#site",
   "dependencies": {
+    "compression": "^1.7.3",
     "express": "^4.16.3",
     "node-fetch": "^2.2.0",
     "xmldom": "^0.1.27"

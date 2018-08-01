@@ -182,8 +182,31 @@ let searchPKG = function() {
 }
 
 function createZip() {
-  // PKGs
-  log('creating zip file')
+  // create custom zip file
+  unfetch('https://api.github.com/repos/dennis1248/Automated-Windows-10-configuration/releases')
+    .then(function(data) { return data.json() })
+    .then(function(output) {
+      return unfetch('/download/' + encodeURIComponent(output[0].assets[0].browser_download_url.replace(/http?s:\/\/.{0,}\/.{0,}\/releases\/download\//ig,'')))
+    })
+    .then(function(data) {return data.blob()})
+    .then(function(data) {return new JSZip().loadAsync(data)})
+    .then(function(zip) {
+      return Promise.all([zip.file("config.json").async("string"), zip.file("setup.exe").async("uint8array")])
+    })
+    .then(function(data) {
+      let config = JSON.parse(data[0])
+      config.programs = PKGs
+      config = JSON.stringify(config)
+      let setup = data[1]
+      let zip = new JSZip()
+      zip.file('config.json', config)
+      zip.file('setup.exe', setup)
+      return zip.generateAsync({type:"blob"})
+    })
+    .then(function(blob) {
+      log(blob)
+      saveAs(blob, "winconfig.zip")
+    })
 }
 
 let currentStep = 1
@@ -199,17 +222,3 @@ let nextStep = function() {
 
 setup()
 let searchInputBox = undefined
-
-
-unfetch('https://api.github.com/repos/dennis1248/Automated-Windows-10-configuration/releases')
-  .then(function(data) { return data.json() })
-  .then(function(output) {
-    log(output[0])
-    return fetch(output[0].assets[0].browser_download_url, {mode: 'no-cors'})
-  })
-  .then(function(data) {
-    return data.blob()
-  })
-  .then(function(data) {
-    log(data)
-  })
