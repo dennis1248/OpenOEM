@@ -49,7 +49,8 @@ let lastRequest = ''
 let lastInput = ''
 let searchBuzzy = false
 function newSearch () {
-  // this function limits the networks request to the chocolatery api to 1 at the time
+  // this function asks for packages that are available and limits the networks request to the chocolatery api to 1 at the time
+  // it also caches the request so you have less network traffic
   function dune(err) {
     if (err) console.error(err)
     searchBuzzy = false
@@ -68,7 +69,13 @@ function newSearch () {
       .then(function(output) {
 
         if (output.status) {
-          let data = output.data 
+          let data = []
+          for (let i = 0; i < output.data.length; i++) {
+            data.push({
+              name: output.data[i].replace(/https?:\/\/.{0,}\(Id='|',.{0,}'\)/gmi, ''),
+              url: output.data[i]
+            })
+          }
 
           // cache the output
           queries.data.push(data)
@@ -88,7 +95,39 @@ function newSearch () {
   }
 }
 
+function renderPkgList() {
+  let results = document.createElement('div')
+  results.classList = 'choosen'
+  for (let i = 0; i < PKGs.length; i++) {
+    const el = PKGs[i]
+    let result = document.createElement('div')
+    result.classList = 'result'
+    let text = document.createElement('p')
+    text.innerText = el
+    result.appendChild(text)
+    let add = document.createElement('button')
+    add.innerText = 'Remove'
+    add.onclick = function() {
+      PKGs.splice(i, 1)
+    }
+    result.appendChild(add)
+    results.appendChild(result)
+  }
+  let oldRes = document.querySelector('.choosen')
+  oldRes.parentNode.replaceChild(results, oldRes) 
+}
+
+let PKGs = []
+function addPkgToList(name) {
+  PKGs.push(name)
+  renderPkgList()
+  searchInputBox.value = ''
+  lastInput = ''
+  newSearch()
+}
+
 function reRender(pointer) {
+  // re-render data to the screen as fast as possible
   let data = queries.data[pointer]
   
   let results = document.createElement('div')
@@ -97,13 +136,21 @@ function reRender(pointer) {
   for (let i = 0; i < data.length; i++) {
     const el = data[i]
     let result = document.createElement('div')
-    result.innerText = el
+    result.classList = 'result'
+    let text = document.createElement('p')
+    text.innerText = el.name
+    result.appendChild(text)
+    let add = document.createElement('button')
+    add.innerText = 'Add'
+    add.onclick = function() {
+      addPkgToList(el.name)
+    }
+    result.appendChild(add)
     results.appendChild(result)
   }
+  
   let oldRes = document.querySelector('.results')
   oldRes.parentNode.replaceChild(results, oldRes) 
-  
-  
 }
 
 let searchPKG = function() {
@@ -115,4 +162,4 @@ let searchPKG = function() {
 }
 
 setup()
-let searchInputBox = document.querySelector('.searchInputBox')
+let searchInputBox = undefined
