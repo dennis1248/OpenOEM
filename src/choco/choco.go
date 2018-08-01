@@ -121,7 +121,7 @@ func PkgChecks(pkg string) error {
 	r, _ := regexp.Compile(strings.ToLower(pkg))
 	check := r.MatchString(strings.ToLower(string(output)))
 	if !check {
-		return errors.New("Package not found, check the availability and proper naming of the package at https://chocolatey.org/")
+		return errors.New("Package not found, check the availability and proper naming of the package at https://chocolatey.org/packages")
 	}
 	// check if the package is already installed
 	cmd = exec.Command(
