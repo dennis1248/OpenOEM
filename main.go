@@ -26,6 +26,6 @@ func main() {
 		funs.Die()
 	}
 
-	fmt.Println("Dune!")
+	fmt.Println("Done!")
 	funs.Die()
 }

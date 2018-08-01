@@ -2,7 +2,7 @@
 ![Project logo](./src/icon-small.png?raw=true "Project logo")
 
 ## What we are trying to achieve
-The ultimate goal of this project is to be able to run an setup.exe with a config file and make it automatically install software and configure your fresh Windows 10 intallation.  
+The ultimate goal of this project is to be able to run a setup.exe with a config file and make it automatically install software and configure your fresh Windows 10 intallation.  
 
 ## What is working
 - :heavy_check_mark: Install programs from chocolatery 
@@ -14,18 +14,18 @@ The ultimate goal of this project is to be able to run an setup.exe with a confi
 
 ## Use the program
 **!! Disclaimer !!**  
-**This application has not 100% fully tested. You could encounter bugs and unexpected behaviour.**
+**This application has not been properly tested yet, you could encounter bugs and unexpected behaviour.**
 - Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
 - Unpack the files
 - Edit the config.json
 - Double click the setup.exe
 
 ## Devolopment
-### NOTES:
+### NOTES
 Please carefully read the following before you start playing around with it;
 - Do not use git clone because that will give errors, [why](https://stackoverflow.com/questions/26942150/importing-go-files-in-same-folder)
 -  As-is it can only be compiled on a Linux-based client, use [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- Do not store files or moddify files in the build directory because then you will likely end up breaking everything and files might be overwritten
+- Do not store files or modify files in the build directory because then you will likely end up breaking everything and files might be overwritten
 ### Setup
 - install [Golang](https://golang.org/dl/)
 - `$ go get github.com/akavel/rsrc`
