@@ -20,7 +20,7 @@ The ultimate goal of this project is to be able to run a setup.exe with a config
 - Double click the setup.exe
 
 ## Devolopment
-### NOTES:
+### NOTES
 Please carefully read the following before you start playing around with it;
 - Do not use git clone because that will give errors, [why](https://stackoverflow.com/questions/26942150/importing-go-files-in-same-folder)
 -  As-is it can only be compiled on a Linux-based client, use [git bash](https://git-scm.com/downloads) or [bash (Ubuntu, fedora, etc)](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
