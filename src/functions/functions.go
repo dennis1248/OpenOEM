@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"os"
 	"runtime"
+
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
 )
 
 // used when the program needs to stop because of an error
@@ -69,4 +71,28 @@ func DownloadFile(filepath string, url string) error {
 		return err
 	}
 	return nil
+}
+
+func EndTips() {
+
+	var returnErrors []string
+
+	_, err := commands.Run("choco", "-v")
+	if err != nil {
+		commands.Run("cmd", "/k",
+			"SET", "\"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"")
+		returnErrors = append(
+			returnErrors,
+			"Chocolatery might not work, if so open cmd and type: SET \"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"")
+	}
+
+	if len(returnErrors) > 0 {
+		// return errors if there are any
+		fmt.Println(" ")
+		fmt.Println("NOTE:")
+		for _, element := range returnErrors {
+			fmt.Println(element)
+		}
+		fmt.Println(" ")
+	}
 }

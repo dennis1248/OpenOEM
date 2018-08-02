@@ -27,5 +27,8 @@ func main() {
 	}
 
 	fmt.Println("Done!")
+
+	funs.EndTips()
+
 	funs.Die()
 }

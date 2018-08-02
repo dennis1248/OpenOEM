@@ -3,11 +3,11 @@ package choco
 import (
 	"errors"
 	"fmt"
-	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
 
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/options"
@@ -17,9 +17,7 @@ import (
 // this file contains all the chocolatery functions
 
 func CheckForChoco() error {
-	check := []string{"choco", "-v"}
-	cmd := exec.Command(check[0], check[1:]...)
-	_, err := cmd.CombinedOutput()
+	_, err := commands.ChocoRun("-v")
 	return err
 }
 
@@ -41,20 +39,19 @@ func InstallIfNeededChocolatey() error {
 		// cmd.CombinedOutput()
 
 		fmt.Println("Installing Chocolatey [2 of 2] Running installer..")
-		cmd := exec.Command(
+		_, err = commands.Run(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
 			"-NoProfile",
 			"-InputFormat", "None",
 			"-ExecutionPolicy", "Bypass",
 			"-file", ChocoInstallFile)
-		_, err = cmd.CombinedOutput()
 		if err != nil {
 			return err
 		}
 
 		if CheckForChoco() != nil {
 			return errors.New(`
-				Chocolatey is installed but is not added to path 
+				Chocolatey isn't installed
 				try running the program again or
 				run the installer manually:
 				https://chocolatey.org/install
@@ -72,10 +69,8 @@ func InstallPkgList(conf types.Config) {
 
 	// setting flags
 	fmt.Println("Configuring Chocolatey..")
-	cmd := exec.Command(
-		"choco",
+	_, err := commands.ChocoRun(
 		"feature", "enable", "-n=allowGlobalConfirmation")
-	_, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println("Unable to enable Chocolatey feature, Error:", err)
 		funs.Die()
@@ -89,11 +84,9 @@ func InstallPkgList(conf types.Config) {
 		if err == nil {
 			// Install the package
 
-			cmd := exec.Command(
-				"choco",
+			_, err := commands.ChocoRun(
 				"install", program,
 				"--yes", "--force")
-			_, err := cmd.CombinedOutput()
 			if err != nil {
 				fmt.Println("Unable to install:", program, "Reason:", err)
 			} else {
@@ -113,10 +106,8 @@ func PkgChecks(pkg string) error {
 	}
 
 	// check if the package exists in the Chocolatey repos
-	cmd := exec.Command(
-		"choco",
+	output, err := commands.ChocoRun(
 		"search", pkg)
-	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return err
 	}
@@ -125,10 +116,7 @@ func PkgChecks(pkg string) error {
 	check := r.MatchString(strings.ToLower(string(output)))
 	if !check && strings.Contains(pkg, "-") {
 		// replace "-" with "" because sometimes the "-" breaks choco search
-		cmd = exec.Command(
-			"choco",
-			"search", strings.Replace(pkg, "-", "", -1))
-		output, err = cmd.CombinedOutput()
+		output, err = commands.ChocoRun("search", strings.Replace(pkg, "-", "", -1))
 		if err != nil {
 			return err
 		}
@@ -141,10 +129,7 @@ func PkgChecks(pkg string) error {
 	}
 
 	// check if the package is already installed
-	cmd = exec.Command(
-		"choco",
-		"search", "--lo", pkg)
-	output, err = cmd.CombinedOutput()
+	output, err = commands.ChocoRun("search", "--lo", pkg)
 	if err != nil {
 		return err
 	}
