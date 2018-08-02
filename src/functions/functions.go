@@ -83,7 +83,7 @@ func EndTips() {
 			"SET", "\"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"")
 		returnErrors = append(
 			returnErrors,
-			"Chocolatery might not work, if so open cmd and type: SET \"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"")
+			"Chocolatey might not function correctly, run the following in the CMD: SET \"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin\"")
 	}
 
 	if len(returnErrors) > 0 {
