@@ -14,7 +14,7 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
 )
 
-// this file contains all the chocolatery functions
+// this file contains all the chocolatey functions
 
 func CheckForChoco() error {
 	_, err := commands.ChocoRun("-v")
