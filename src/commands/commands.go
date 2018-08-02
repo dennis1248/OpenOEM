@@ -5,7 +5,7 @@ import (
 )
 
 func Run(commands ...string) (output []byte, err error) {
-	// a simpeler version of exec.Command + cmd.CombinedOutput
+	// a simple version of exec.Command + cmd.CombinedOutput
 	cmd := exec.Command(commands[0], commands[1:]...)
 	return cmd.CombinedOutput()
 }
