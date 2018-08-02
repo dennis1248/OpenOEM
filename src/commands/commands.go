@@ -11,7 +11,7 @@ func Run(commands ...string) (output []byte, err error) {
 }
 
 func ChocoRun(commands ...string) (output []byte, err error) {
-	// run chocolatery command with full choco path
+	// run chocolatey command with full choco path
 	chocoDir := "C:\\ProgramData\\chocolatey\\choco.exe"
 	fullCommand := append([]string{chocoDir}, commands...)
 	return Run(fullCommand...)
