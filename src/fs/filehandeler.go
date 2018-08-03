@@ -9,6 +9,10 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
+	"syscall"
+	"unicode/utf16"
+	"unsafe"
 
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/options"
@@ -90,12 +94,21 @@ func FindAndOpenPackageJson() (out types.Config, err error) {
 
 func GetWallpaper(Package types.Config) string {
 
+	// Copied get old wallpaper from https://github.com/reujab/wallpaper/blob/master/windows.go#L31
+	var oldWallpaperPointer [256]uint16
+	user32 := syscall.NewLazyDLL("user32.dll")
+	systemParametersInfo := user32.NewProc("SystemParametersInfoW")
+	systemParametersInfo.Call(
+		uintptr(0x0073), uintptr(cap(oldWallpaperPointer)), uintptr(unsafe.Pointer(&oldWallpaperPointer[0])), uintptr(0),
+	)
+	oldWallpaper := strings.Trim(string(utf16.Decode(oldWallpaperPointer[:])), "\x00")
+
 	wallpaper := Package.Wallpaper
 	dst := "C:\\ProgramData\\automated-Windows-10-configuration\\wallpaper" + path.Ext(wallpaper)
 
 	if len(wallpaper) == 0 {
-		// user doesn't want wallpaper return nothing
-		return ""
+		// user doesn't want wallpaper return old wallpaper
+		return oldWallpaper
 	}
 
 	if _, err := os.Stat(wallpaper); err == nil {
@@ -115,5 +128,6 @@ func GetWallpaper(Package types.Config) string {
 		return dst
 	}
 
-	return ""
+	// can't set wallpaper return old wallpaper
+	return oldWallpaper
 }
