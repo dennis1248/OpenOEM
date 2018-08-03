@@ -131,3 +131,8 @@ func GetWallpaper(Package types.Config) string {
 	// can't set wallpaper return old wallpaper
 	return oldWallpaper
 }
+
+func MakeFile(data string, filePath string) error {
+	byteData := []byte(data)
+	return ioutil.WriteFile(filePath, byteData, 0777)
+}

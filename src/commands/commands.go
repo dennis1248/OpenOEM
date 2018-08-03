@@ -16,3 +16,13 @@ func ChocoRun(commands ...string) (output []byte, err error) {
 	fullCommand := append([]string{chocoDir}, commands...)
 	return Run(fullCommand...)
 }
+
+func PSRun(command string) (output []byte, err error) {
+	// run a command inside powershell
+	return Run(
+		"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+		"-NoProfile",
+		"-InputFormat", "None",
+		"-ExecutionPolicy", "Bypass",
+		"-Command", command)
+}

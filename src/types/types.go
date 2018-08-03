@@ -11,6 +11,10 @@ type Config struct {
 	Wallpaper       string   `json:"wallpaper"`
 	ThemeColorSlash string   `json:"// themeColor,omitempty"`
 	ThemeColor      string   `json:"themeColor"`
+	SearchSlash     string   `json:"// search,omitempty"`
+	Search          string   `json:"search"`
+	TaskViewSlash   string   `json:"// taskView,omitempty"`
+	TaskView        bool     `json:"taskView"`
 }
 
 // Type structure to bind to options.

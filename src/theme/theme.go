@@ -84,8 +84,8 @@ func SetTheme() error {
 	}
 
 	// try close the settings because it pops up when installing theme
-	fmt.Println("Wait 3 seconds before trying to close settings")
-	time.Sleep(3 * time.Second)
+	fmt.Println("Wait 2 seconds before trying to close settings")
+	time.Sleep(2 * time.Second)
 	commands.Run(
 		"cmd", "/c",
 		"taskkill", "/im", "SystemSettings.exe", "/t", "/f")

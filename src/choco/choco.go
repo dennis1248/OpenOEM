@@ -33,11 +33,6 @@ func InstallIfNeededChocolatey() error {
 			return err
 		}
 
-		// fmt.Println("Installing Chocolatey [2 of 3] adding go to user path")
-		// skip this command for now because it might break the path variable :(
-		// cmd = exec.Command("cmd", "/c", "set", "PATH=" + os.Getenv("PATH") + ";%ALLUSERSPROFILE%\\chocolatey\\bin")
-		// cmd.CombinedOutput()
-
 		fmt.Println("Installing Chocolatey [2 of 2] Running installer..")
 		_, err = commands.Run(
 			"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
