@@ -5,6 +5,7 @@ import (
 
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/choco"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
+	"github.com/dennis1248/Automated-Windows-10-configuration/src/theme"
 )
 
 func main() {
@@ -24,6 +25,13 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 		funs.Die()
+	}
+
+	err = theme.SetTheme()
+	if err != nil {
+		fmt.Println("Error while installing theme, Error:")
+		fmt.Println(err)
+		fmt.Println()
 	}
 
 	fmt.Println("Done!")

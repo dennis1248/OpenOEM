@@ -24,6 +24,13 @@ config.json
 # This config file is for release and cannot be changed 
 config.example.json
 
+# Generated .theme files from the code
+*.theme
+*.theme~
+
+# Testing folder
+/test/
+
 # docs nodejs webserver
 logs
 *.log

@@ -2,5 +2,9 @@
   "// programs": "A list of programs to install using chocolatey, https://chocolatey.org/",
   "programs": [
     "chocolateygui"
-  ]
+  ],
+  "// wallpaper": "( string ) Filename or full url, leave empty if you don't want this setting",
+  "wallpaper": "",
+  "// themeColor": "( string ) Theme color in hex, leave empty if you don't want this setting",
+  "themeColor": "0077D2"
 }
