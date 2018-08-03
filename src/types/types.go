@@ -5,6 +5,7 @@ package types
 
 // Generated json types using: https://mholt.github.io/json-to-go/
 type Config struct {
+	Info            string   `json:"INFO,omitempty"`
 	ProgramsSlash   string   `json:"// programs,omitempty"`
 	Programs        []string `json:"programs"`
 	WallpaperSlash  string   `json:"// wallpaper,omitempty"`

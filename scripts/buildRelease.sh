@@ -9,9 +9,6 @@ fi
 # run the build setup
 sh ./buildSetup.sh
 
-# Copy the example config file
-cp -f ../config.example.json ../build/config.json
-
 # Create release zip in build folder
 go run __makerelease__/main.go
 

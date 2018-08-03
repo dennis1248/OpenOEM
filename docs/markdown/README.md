@@ -48,4 +48,3 @@ Exec | Output
 `$ sh buildDev.sh` | Build the program and execute  
 `$ sh buildRelease.sh` | Build a release setup.exe file  
   
-Note: the buildRelease does NOT use the config.json, it uses the config.example.json as config.json so you can test the build with a modified config.json without having to worry about releasing a wrong config.

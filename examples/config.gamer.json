@@ -1,4 +1,6 @@
 {
+  "INFO": "This is a config file made for: https://github.com/dennis1248/Automated-Windows-10-configuration",
+  
   "// programs": "Check the availability, stabilaty and proper naming of your favorite applications at: https://chocolatey.org/packages",
   "programs": [
     "origin",
@@ -20,6 +22,6 @@
   "// taskView": "( boolean ) show *true or hide *false the task view button, Default: true",
   "taskView": true,
 
-  "// removeJunkApps": "( boolean ) remove *true windows store apps, this might not include the windows store ad games and it might be a bit destructive, Default: false",
+  "// removeJunkApps": "( boolean ) remove *true ALL apps except ads, Default: false",
   "removeJunkApps": false
 }

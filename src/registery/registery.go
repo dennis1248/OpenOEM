@@ -60,6 +60,7 @@ func RemoveJunkApps(allow bool) error {
 	if !allow {
 		return nil
 	}
+	fmt.Println("NOTE: Executing dangerous commands !!this will remove ALL apps!!")
 	commands.PSRun(`(New-Object -Com Shell.Application).
 			NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
 			Items() |
