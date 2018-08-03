@@ -28,6 +28,7 @@ func main() {
 		funs.Die()
 	}
 
+	fmt.Println("Installing windows theme...")
 	err = theme.SetTheme()
 	if err != nil {
 		fmt.Println("Error while installing theme, Error:")
@@ -35,6 +36,7 @@ func main() {
 		fmt.Println()
 	}
 
+	fmt.Println("Changing registery items...")
 	err = registery.SetAllRegisteryItems()
 	if err != nil {
 		fmt.Println("Error while changing registery items, Error:")

@@ -15,6 +15,8 @@ type Config struct {
 	Search          string   `json:"search"`
 	TaskViewSlash   string   `json:"// taskView,omitempty"`
 	TaskView        bool     `json:"taskView"`
+	RemoveJunkSlash string   `json:"// removeJunkApps,omitempty"`
+	RemoveJunk      bool     `json:"removeJunkApps"`
 }
 
 // Type structure to bind to options.

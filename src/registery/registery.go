@@ -56,6 +56,20 @@ func SetTaskView(SetTo bool) error {
 		SetToRegistery)
 }
 
+func RemoveJunkApps(allow bool) error {
+	if !allow {
+		return nil
+	}
+	commands.PSRun(`(New-Object -Com Shell.Application).
+			NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
+			Items() |
+		%{ $_.Verbs() } |
+		?{$_.Name -match 'Un.*pin from Start'} |
+		%{$_.DoIt()}`)
+	commands.PSRun("Get-AppXPackage | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage --quiet --no-verbose >$null 2>&1")
+	return nil
+}
+
 func RestartUI() {
 	commands.PSRun("Stop-Process -ProcessName explorer")
 }
@@ -65,6 +79,11 @@ func SetAllRegisteryItems() error {
 	Package, err := fs.FindAndOpenPackageJson()
 	if err != nil {
 		return err
+	}
+
+	err = RemoveJunkApps(Package.RemoveJunk)
+	if err != nil {
+		fmt.Println("can't remove apps item, Error:", err)
 	}
 
 	err = SetSearch(Package.Search)
