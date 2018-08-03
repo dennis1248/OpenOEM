@@ -6,8 +6,10 @@ The ultimate goal of this project is to be able to run a setup.exe with a config
 
 ## What is working
 - :heavy_check_mark: Install programs from chocolatery 
+- :heavy_check_mark: Setting theme color and wallpaper 
 - :x: Configure windows / programs
 - :x: The software is Stable
+- Do you have surgestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
 
 ## Requirements
 - Windows 10 x64  

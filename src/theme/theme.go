@@ -3,6 +3,7 @@ package theme
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
 	"time"
@@ -58,31 +59,39 @@ MTSM=DABJDKT
 func SetTheme() error {
 	// set theme that is generated from the config file
 
+	ThemeFile := "installTheme.theme"
+
 	// get package information
 	Package, err := fs.FindAndOpenPackageJson()
 	if err != nil {
 		return err
 	}
 
+	// remove old theme files if exsist
+	os.Remove(ThemeFile)
+
 	// create installTheme.theme
 	theme := []byte(MkTheme(Package))
-	err = ioutil.WriteFile("installTheme.theme", theme, 0777)
+	err = ioutil.WriteFile(ThemeFile, theme, 0777)
 	if err != nil {
 		return err
 	}
 
 	// install theme
-	_, err = commands.Run("cmd", "/c", "installTheme.theme")
+	_, err = commands.Run("cmd", "/c", ThemeFile)
 	if err != nil {
 		return err
 	}
 
-	// try close the settings popup
+	// try close the settings because it pops up when installing theme
 	fmt.Println("Wait 3 seconds before trying to close settings")
 	time.Sleep(3 * time.Second)
 	commands.Run(
 		"cmd", "/c",
 		"taskkill", "/im", "SystemSettings.exe", "/t", "/f")
+
+	// cleanup
+	os.Remove(ThemeFile)
 
 	return nil
 }
