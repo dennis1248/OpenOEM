@@ -21,4 +21,4 @@ NOTE: For vm's i use [virtual box](https://www.virtualbox.org/)
 - Close the vm
 
 ## Tips
-- Install chocolatey and create a new softlink so you don't have to wait every time for chocolatey to install
+- Install chocolatey and create a new snapshot so you don't have to wait every time for chocolatey to install
