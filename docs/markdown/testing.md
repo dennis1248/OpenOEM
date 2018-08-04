@@ -1,7 +1,7 @@
 # Testing
 
 ## Make setup files
-- `$ cd scripts` (if you are already)
+- `$ cd scripts` (if you haven't already)
 - `$ sh buildTest.sh`
 
 ## Create a testing VM
