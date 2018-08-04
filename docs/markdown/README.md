@@ -2,13 +2,13 @@
 ![Project logo](/src/icon-small.png?raw=true "Project logo")
 
 While you drink a cup of coffee we do the rest  
-This automated tool will Install programs from chocolatery, give windows your favorite color, set a wallpaper, remove annoying UI elements and mutch more from just a config file
+This automated tool will Install programs from chocolatey, give windows your favourite colour, set a wallpaper, remove annoying UI elements and much more from just a config file
 
 ## What can this tool do
-- :heavy_check_mark: **Install** programs from **chocolatery** 
-- :heavy_check_mark: Setting **theme color** and **wallpaper**  
+- :heavy_check_mark: **Install** programs from **chocolatey** 
+- :heavy_check_mark: Setting **theme colour** and **wallpaper**  
 - :heavy_check_mark: Change or **remove** the **task view** and **search**
-- If you have anny surgestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
+- If you have any suggestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
 
 ## Requirements
 - Windows 10 x64  
@@ -23,7 +23,7 @@ This automated tool will Install programs from chocolatery, give windows your fa
 - Edit the config.json
 - Double click the setup.exe or save it for later use :)
 
-## Devolopment
+## Development
 ### NOTES
 Please carefully read the following before you start playing around with it;
 - Do not use git clone because that will give errors, [why](https://stackoverflow.com/questions/26942150/importing-go-files-in-same-folder)

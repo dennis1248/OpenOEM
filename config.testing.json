@@ -19,6 +19,6 @@
   "// taskView": "( boolean ) show *true or hide *false the task view button, Default: true",
   "taskView": false,
 
-  "// removeJunkApps": "( boolean ) remove *true windows store apps, this might not include the windows store ad games and it might be a bit destructive, Default: false",
+  "// removeJunkApps": "( boolean ) remove *true windows junk apps NOTE: currently proberly not working or doesn't do a lot, Default: false",
   "removeJunkApps": true
 }

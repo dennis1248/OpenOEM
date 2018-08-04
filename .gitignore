@@ -28,8 +28,9 @@ config.example.json
 *.theme
 *.theme~
 
-# Testing folder
+# Testing folders
 /test/
+/__test__/ 
 
 # docs nodejs webserver
 logs

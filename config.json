@@ -18,6 +18,9 @@
   "// taskView": "( boolean ) show *true or hide *false the task view button, Default: true",
   "taskView": true,
 
-  "// removeJunkApps": "( boolean ) remove *true ALL apps except ads, Default: false",
-  "removeJunkApps": false
+  "// removeJunkApps": "( boolean ) remove *true windows junk apps NOTE: currently proberly not working or doesn't do a lot, Default: false",
+  "removeJunkApps": false,
+  
+  "// removeEdigeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
+  "removeEdigeIcon": false
 }

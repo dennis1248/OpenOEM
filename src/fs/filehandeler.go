@@ -7,6 +7,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"os/user"
 	"path"
 	"path/filepath"
 	"strings"
@@ -130,6 +131,36 @@ func GetWallpaper(Package types.Config) string {
 
 	// can't set wallpaper return old wallpaper
 	return oldWallpaper
+}
+
+func FinalCleanUp() {
+	RemoveEdgeIcon()
+	// in some cases the previous os.Remove doesn't work so just try it again
+	os.Remove("installTheme.theme")
+}
+
+func RemoveEdgeIcon() error {
+	// not working for now, the name is probebly different
+
+	// check if removing home icons is allowed by the config file
+	Package, err := FindAndOpenPackageJson()
+	if err != nil {
+		return err
+	}
+	if !Package.R_EdigeIcon {
+		return nil
+	}
+
+	// get the current user's home folder and remove the edge icoon
+	user, err := user.Current()
+	if err != nil {
+		return err
+	}
+	err = os.Remove(user.HomeDir + "\\Desktop\\Microsoft Edge")
+	if err != nil {
+		fmt.Println("can't remove windows icoon from start screen, Error:", err)
+	}
+	return nil
 }
 
 func MakeFile(data string, filePath string) error {

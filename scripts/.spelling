@@ -1,0 +1,36 @@
+# markdown-spellcheck spelling configuration file
+# Format - lines beginning # are comments
+# global dictionary is at the start, file overrides afterwards
+# one word per line, to define a file override use ' - filename'
+# where filename is relative to this configuration file
+nodejs
+ - docs/markdown/README.md
+10
+config
+heavy_check_mark
+winconfig
+config.json
+setup.exe
+Golang
+GOPATH
+testing.md
+ - docs/markdown/testing.md
+i
+64
+ - src/README.md
+SRC
+ - ../docs/markdown/README.md
+10
+config
+heavy_check_mark
+winconfig
+config.json
+setup.exe
+Golang
+GOPATH
+testing.md
+ - ../docs/markdown/testing.md
+i
+64
+ - ../src/README.md
+SRC
