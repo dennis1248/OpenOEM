@@ -60,14 +60,18 @@ func RemoveJunkApps(allow bool) error {
 	if !allow {
 		return nil
 	}
-	fmt.Println("NOTE: Executing dangerous commands !!this will remove ALL apps!!")
-	commands.PSRun(`(New-Object -Com Shell.Application).
-			NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
-			Items() |
-		%{ $_.Verbs() } |
-		?{$_.Name -match 'Un.*pin from Start'} |
-		%{$_.DoIt()}`)
-	commands.PSRun("Get-AppXPackage | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage --quiet --no-verbose >$null 2>&1")
+
+	// This command will not work when just executed in powershell
+	// remove the ` (escape characters) to run it
+	_, err := commands.PSRun("(New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | %{ `$_.Verbs() } | ?{`$_.Name -match 'Un.*pin from Start'} | %{`$_.DoIt()}")
+	if err != nil {
+		println("command out err:", err)
+	}
+
+	// This command will break your system
+	// https://github.com/dennis1248/Automated-Windows-10-configuration/issues/10
+	// commands.PSRun("Get-AppXPackage | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage --quiet --no-verbose >$null 2>&1")
+
 	return nil
 }
 

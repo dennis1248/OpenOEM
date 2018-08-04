@@ -2,15 +2,13 @@
 ![Project logo](/src/icon-small.png?raw=true "Project logo")
 
 While you drink a cup of coffee we do the rest  
-Install programs from chocolatery, give windows your favorite color, set a wallpaper, remove annoying UI elements and mutch more
+This automated tool will Install programs from chocolatery, give windows your favorite color, set a wallpaper, remove annoying UI elements and mutch more from just a config file
 
-## What is working
+## What can this tool do
 - :heavy_check_mark: **Install** programs from **chocolatery** 
 - :heavy_check_mark: Setting **theme color** and **wallpaper**  
 - :heavy_check_mark: Change or **remove** the **task view** and **search**
-- :x: Configure windows / programs
-- :x: The software is Stable
-- Do you have surgestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
+- If you have anny surgestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
 
 ## Requirements
 - Windows 10 x64  
@@ -47,4 +45,7 @@ Exec | Output
 `$ sh buildSetup.sh` | Build just the setup.exe file for development  
 `$ sh buildDev.sh` | Build the program and execute  
 `$ sh buildRelease.sh` | Build a release setup.exe file  
+`$ sh buildTest.sh` | Build and add the testing wallpaper and config
   
+### Testing
+Read: [docs/markdown/testing.md](https://github.com/dennis1248/Automated-Windows-10-configuration/blob/master/docs/markdown/testing.md)

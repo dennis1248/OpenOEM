@@ -81,7 +81,7 @@ func InstallPkgList(conf types.Config) {
 
 			_, err := commands.ChocoRun(
 				"install", program,
-				"--yes", "--force")
+				"--yes", "--force", "--allowunofficial", "--use-system-powershell")
 			if err != nil {
 				fmt.Println("Unable to install:", program, "Reason:", err)
 			} else {

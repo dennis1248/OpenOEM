@@ -3,7 +3,8 @@
 
   "// programs": "( []string ) A list of programs to install using chocolatey, https://chocolatey.org/",
   "programs": [
-    "chocolateygui"
+    "cpu-z",
+    "gpu-z"
   ],
   
   "// wallpaper": "( string ) Filename or full url, leave empty if you don't want this setting",
