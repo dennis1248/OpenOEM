@@ -22,5 +22,5 @@
   "removeJunkApps": false,
   
   "// removeEdgeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
-  "removeEdigeIcon": false
+  "removeEdgeIcon": false
 }
