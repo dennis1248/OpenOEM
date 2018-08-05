@@ -54,7 +54,6 @@ func CheckDataFolder() {
 func FindPackageJson(toCheck []string) (string, error) {
 	// this function returns the location of a found package file
 	// currently this only checks in this directory and one above
-	fmt.Println("Searching for config file")
 	toReturn := ""
 	for _, check := range toCheck {
 		fullPath, _ := filepath.Abs(check)
@@ -140,8 +139,6 @@ func FinalCleanUp() {
 }
 
 func RemoveEdgeIcon() error {
-	// not working for now, the name is probebly different
-
 	// check if removing home icons is allowed by the config file
 	Package, err := FindAndOpenPackageJson()
 	if err != nil {
@@ -156,10 +153,14 @@ func RemoveEdgeIcon() error {
 	if err != nil {
 		return err
 	}
-	err = os.Remove(user.HomeDir + "\\Desktop\\Microsoft Edge")
-	if err != nil {
-		fmt.Println("can't remove windows icoon from start screen, Error:", err)
-	}
+	tryFile1, _ := filepath.Abs(user.HomeDir + "\\Desktop\\Microsoft Edge.lnk")
+	tryFile2, _ := filepath.Abs(user.HomeDir + "\\Desktop\\Microsoft Edge.lnk*")
+	tryFile3, _ := filepath.Abs(user.HomeDir + "\\Desktop\\Microsoft Edge.lnk@")
+	tryFile4, _ := filepath.Abs(user.HomeDir + "\\Desktop\\Microsoft Edge.lnk")
+	os.RemoveAll(tryFile1)
+	os.RemoveAll(tryFile2)
+	os.RemoveAll(tryFile3)
+	os.RemoveAll(tryFile4)
 	return nil
 }
 
