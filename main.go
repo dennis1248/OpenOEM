@@ -18,7 +18,7 @@ func main() {
 	// check if Chocolatey is installed, if not try to install it
 	err := choco.InstallIfNeededChocolatey()
 	if err != nil {
-		fmt.Println("can't run Chocolatey installer, Error: \n", err)
+		fmt.Println("Can't run Chocolatey installer, Error: \n", err)
 		funs.Die()
 	}
 
@@ -29,7 +29,7 @@ func main() {
 		funs.Die()
 	}
 
-	fmt.Println("Installing windows theme...")
+	fmt.Println("Installing Windows theme...")
 	err = theme.SetTheme()
 	if err != nil {
 		fmt.Println("Error while installing theme, Error:")
