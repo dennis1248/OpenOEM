@@ -4,7 +4,7 @@
 sh ./buildSetup.sh
 
 # copy the testing config to the build dir
-cp -f ../config.testing.json ../build/config.json
+cp -f ../examples/config.testing.json ../build/config.json
 
 # copy the test wallpaper to the build dir
-cp -f ../src/testWallpaper.png ../build/testWallpaper.png
+cp -f ../examples/testWallpaper.png ../build/testWallpaper.png

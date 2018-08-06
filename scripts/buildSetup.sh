@@ -26,7 +26,7 @@ mkdir ../build -p
 cp setup.exe ../build/
 
 # Copy the example config file
-cp -f ../config.json ../build/config.json
+cp -f ../examples/config.basic.json ../build/config.json
 
 # cleanup
 rm -f setup.exe ../FILE.syso setup.exe~
