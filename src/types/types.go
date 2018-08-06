@@ -18,8 +18,8 @@ type Config struct {
 	TaskView         bool     `json:"taskView"`
 	RemoveJunkSlash  string   `json:"// removeJunkApps,omitempty"`
 	RemoveJunk       bool     `json:"removeJunkApps"`
-	R_EdigeIconSlash string   `json:"// removeEdigeIcon,omitempty"`
-	R_EdigeIcon      bool     `json:"removeEdigeIcon"`
+	R_EdigeIconSlash string   `json:"// removeEdgeIcon,omitempty"`
+	R_EdigeIcon      bool     `json:"removeEdgeIcon"`
 }
 
 // Type structure to bind to options.

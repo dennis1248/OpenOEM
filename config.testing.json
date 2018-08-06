@@ -22,6 +22,6 @@
   "// removeJunkApps": "( boolean ) remove *true windows junk apps NOTE: currently proberly not working or doesn't do a lot, Default: false",
   "removeJunkApps": true,
   
-  "// removeEdigeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
-  "removeEdigeIcon": true
+  "// removeEdgeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
+  "removeEdgeIcon": true
 }
