@@ -9,8 +9,7 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
 )
 
-// edit registery things
-
+// setRegValue set registery value
 func setRegValue(Path string, Item string, ValueType string, Newval string) error {
 
 	regex := "^DWORD$"
@@ -28,6 +27,7 @@ func setRegValue(Path string, Item string, ValueType string, Newval string) erro
 	return err
 }
 
+// SetSearch chang the look of search to a full search, just an icon or nothing
 func SetSearch(setTo string) error {
 
 	SetToRegistery := "2"
@@ -44,6 +44,7 @@ func SetSearch(setTo string) error {
 		SetToRegistery)
 }
 
+// SetTaskView set the task view icon to be visable or removed
 func SetTaskView(SetTo bool) error {
 	SetToRegistery := "1"
 	if !SetTo {
@@ -56,6 +57,9 @@ func SetTaskView(SetTo bool) error {
 		SetToRegistery)
 }
 
+// RemoveJunkApps Remove the windows junk apps from the start screen
+// maybe later also remove them
+// Because of bad experiance with removing apps we currently don't fully remove apps
 func RemoveJunkApps(allow bool) error {
 	if !allow {
 		return nil
@@ -72,13 +76,15 @@ func RemoveJunkApps(allow bool) error {
 	return nil
 }
 
+// RestartUI restart explorer.exe a frienly way
 func RestartUI() {
 	commands.PSRun("Stop-Process -ProcessName explorer")
 }
 
+// SetAllRegisteryItems The main function of the file
 func SetAllRegisteryItems() error {
 
-	Package, err := fs.FindAndOpenPackageJson()
+	Package, err := fs.FindAndOpenPackageJSON()
 	if err != nil {
 		return err
 	}

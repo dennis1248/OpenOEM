@@ -12,7 +12,7 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
 )
 
-// used when the program needs to stop because of an error
+// Die used when the program needs to stop because of an error
 func Die() {
 	fmt.Println("press enter to exit the application")
 	// Prevent the application from closing
@@ -20,7 +20,7 @@ func Die() {
 	os.Exit(0)
 }
 
-// Check if a array contains value
+// Contains Check if a array contains value
 func Contains(arr []string, str string) bool {
 	for _, a := range arr {
 		if a == str {
@@ -30,14 +30,14 @@ func Contains(arr []string, str string) bool {
 	return false
 }
 
+// checkIfAdmin checks if the program is going to run width administative rights
+// for now just returns true because the program is forced to run with administrator rights
 func checkIfAdmin() bool {
-	// check if the program is going to run width administative rights
-	// skip this part for now, I don't know yet how to check for administrator rights
 	return true
 }
 
+// CheckSYS check if your system is supported
 func CheckSYS() {
-	// check if your system is supported
 	status := true
 	args := os.Args[1:]
 	skip := Contains(args, "--skipChecks") || Contains(args, "-s")
@@ -54,7 +54,7 @@ func CheckSYS() {
 	}
 }
 
-// Download a file from the internet
+// DownloadFile download a file from the internet
 func DownloadFile(filepath string, url string) error {
 	out, err := os.Create(filepath)
 	if err != nil {
@@ -73,6 +73,7 @@ func DownloadFile(filepath string, url string) error {
 	return nil
 }
 
+// EndTips returns some last tips before the user clicks the program away
 func EndTips() {
 
 	var returnErrors []string

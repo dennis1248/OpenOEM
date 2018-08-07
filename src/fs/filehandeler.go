@@ -20,10 +20,10 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
 )
 
-var printedUsingConfigFile bool = false
+var printedUsingConfigFile = false
 
+// Copy file from source to destination
 func Copy(src, dst string) error {
-	// copy file from source to destination
 	in, err := os.Open(src)
 	if err != nil {
 		return err
@@ -43,17 +43,18 @@ func Copy(src, dst string) error {
 	return out.Close()
 }
 
+// CheckDataFolder = check if the data folde already exsisted
 func CheckDataFolder() {
-	// check if the data folde already exsisted
 	path := "C:\\ProgramData\\automated-Windows-10-configuration"
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.MkdirAll(path, 0777)
 	}
 }
 
-func FindPackageJson(toCheck []string) (string, error) {
-	// this function returns the location of a found package file
-	// currently this only checks in this directory and one above
+//
+// FindPackageJSON = returns the location of a found package file
+// currently this only checks in this directory and one above
+func FindPackageJSON(toCheck []string) (string, error) {
 	toReturn := ""
 	for _, check := range toCheck {
 		fullPath, _ := filepath.Abs(check)
@@ -68,13 +69,13 @@ func FindPackageJson(toCheck []string) (string, error) {
 	return toReturn, nil
 }
 
-func OpenPackageJson(packageJsonFile string) (out types.Config, err error) {
-	// returns the output of the config file
+// OpenPackageJSON = returns the output of the config file
+func OpenPackageJSON(packageJSONFile string) (out types.Config, err error) {
 	if !printedUsingConfigFile {
 		printedUsingConfigFile = true
-		fmt.Println("Using this config file:", packageJsonFile)
+		fmt.Println("Using this config file:", packageJSONFile)
 	}
-	fileContent, err := ioutil.ReadFile(packageJsonFile)
+	fileContent, err := ioutil.ReadFile(packageJSONFile)
 	if err != nil {
 		return types.Config{}, err
 	}
@@ -83,21 +84,27 @@ func OpenPackageJson(packageJsonFile string) (out types.Config, err error) {
 	return data, nil
 }
 
-func FindAndOpenPackageJson() (out types.Config, err error) {
+// FindAndOpenPackageJSON = Find the pacakge JSON and directly open it
+func FindAndOpenPackageJSON() (out types.Config, err error) {
 	PackageName := options.GetOptions().PackageName
-	packageJsonFile, err := FindPackageJson([]string{"./" + PackageName, "./../" + PackageName})
+	packageJSONFile, err := FindPackageJSON([]string{"./" + PackageName, "./../" + PackageName})
 	if err != nil {
 		return types.Config{}, err
 	}
-	return OpenPackageJson(packageJsonFile)
+	return OpenPackageJSON(packageJSONFile)
 }
 
+var (
+	user32               = syscall.NewLazyDLL("user32.dll")
+	systemParametersInfo = user32.NewProc("SystemParametersInfoW")
+)
+
+// GetWallpaper returns the a string with a wallpaper to set
+// from the config file or if the user doens't want that just the old wallpaper path
 func GetWallpaper(Package types.Config) string {
 
 	// Copied get old wallpaper from https://github.com/reujab/wallpaper/blob/master/windows.go#L31
 	var oldWallpaperPointer [256]uint16
-	user32 := syscall.NewLazyDLL("user32.dll")
-	systemParametersInfo := user32.NewProc("SystemParametersInfoW")
 	systemParametersInfo.Call(
 		uintptr(0x0073), uintptr(cap(oldWallpaperPointer)), uintptr(unsafe.Pointer(&oldWallpaperPointer[0])), uintptr(0),
 	)
@@ -132,15 +139,17 @@ func GetWallpaper(Package types.Config) string {
 	return oldWallpaper
 }
 
+// FinalCleanUp is the final cleanup totch
 func FinalCleanUp() {
 	RemoveEdgeIcon()
 	// in some cases the previous os.Remove doesn't work so just try it again
 	os.Remove("installTheme.theme")
 }
 
+// RemoveEdgeIcon = Remove the edge icon if specified by the config file
 func RemoveEdgeIcon() error {
 	// check if removing home icons is allowed by the config file
-	Package, err := FindAndOpenPackageJson()
+	Package, err := FindAndOpenPackageJSON()
 	if err != nil {
 		return err
 	}
@@ -164,6 +173,7 @@ func RemoveEdgeIcon() error {
 	return nil
 }
 
+// MakeFile a simpel wrapper around how to creat a file
 func MakeFile(data string, filePath string) error {
 	byteData := []byte(data)
 	return ioutil.WriteFile(filePath, byteData, 0777)

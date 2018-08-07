@@ -1,5 +1,7 @@
 package theme
 
+// this package sets the theme stuff
+
 import (
 	"fmt"
 	"io/ioutil"
@@ -13,9 +15,8 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
 )
 
-// this package sets the theme stuff
-
-func ThemeColor(Package types.Config) string {
+// Color returns a string with a hexa decimal color value suable for a .theme file
+func Color(Package types.Config) string {
 	r, _ := regexp.Compile("^#?[A-Fa-f0-9]{6}$")
 	check := r.MatchString(Package.ThemeColor)
 	if check {
@@ -24,6 +25,7 @@ func ThemeColor(Package types.Config) string {
 	return "0XC4E81123"
 }
 
+// MkTheme returns a string that can be saved as a .theme file
 func MkTheme(Package types.Config) string {
 	// return a string that can be saved as a valid .theme file
 
@@ -48,7 +50,7 @@ Path=%SystemRoot%\resources\themes\Aero\Aero.msstyles
 ColorStyle=NormalColor
 Size=NormalSize
 AutoColorization=0
-ColorizationColor=` + ThemeColor(Package) + `
+ColorizationColor=` + Color(Package) + `
 VisualStyleVersion=10
 
 [MasterThemeSelector]
@@ -56,13 +58,13 @@ MTSM=DABJDKT
 `
 }
 
+// SetTheme sets the theme that is generated from the config file
 func SetTheme() error {
-	// set theme that is generated from the config file
 
 	ThemeFile := "installTheme.theme"
 
 	// get package information
-	Package, err := fs.FindAndOpenPackageJson()
+	Package, err := fs.FindAndOpenPackageJSON()
 	if err != nil {
 		return err
 	}

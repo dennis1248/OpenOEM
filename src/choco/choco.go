@@ -142,12 +142,12 @@ func InstallPackages() error {
 	// install Chocolatey packages
 
 	PackageName := options.GetOptions().PackageName
-	packageJson, err := fs.FindPackageJson([]string{"./" + PackageName, "./../" + PackageName})
+	packageJSON, err := fs.FindPackageJSON([]string{"./" + PackageName, "./../" + PackageName})
 	if err != nil {
 		return err
 	}
 
-	conf, err := fs.OpenPackageJson(packageJson)
+	conf, err := fs.OpenPackageJSON(packageJSON)
 	if err != nil {
 		return err
 	}

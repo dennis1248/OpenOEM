@@ -1,0 +1,10 @@
+{
+  "terminal.integrated.env.linux": {
+    "GOOS": "windows", 
+    "GOARCH": "386"
+  },
+  "terminal.integrated.env.osx": {
+    "GOOS": "windows", 
+    "GOARCH": "386"
+  }
+}
