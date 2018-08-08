@@ -1,10 +1,22 @@
 {
   "terminal.integrated.env.linux": {
     "GOOS": "windows", 
-    "GOARCH": "386"
+    "GOARCH": "386",
+    "GOHOSTOS": "windows"
   },
   "terminal.integrated.env.osx": {
     "GOOS": "windows", 
-    "GOARCH": "386"
+    "GOARCH": "386",
+    "GOHOSTOS": "windows"
+  },
+  "go.toolsEnvVars": {
+    "GOOS": "windows", 
+    "GOARCH": "386",
+    "GOHOSTOS": "windows"
+  },
+  "go.testEnvVars": {
+    "GOOS": "windows", 
+    "GOARCH": "386",
+    "GOHOSTOS": "windows"
   }
 }

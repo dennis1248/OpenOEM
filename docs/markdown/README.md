@@ -49,3 +49,16 @@ Exec | Output
   
 ### Testing
 Read: [docs/markdown/testing.md](https://github.com/dennis1248/Automated-Windows-10-configuration/blob/master/docs/markdown/testing.md)
+
+### VScode and linux bugg
+if you get this error under the tab PROBLEMS:  
+```
+go build errors: mkdir /usr/lib/golang/pkg/windows_386/: permission denied
+go build internal/race: mkdir /usr/lib/golang/pkg/windows_386: permission denied
+...
+```  
+Do this:
+- `$ su -`
+- `$ cd /usr/lib/golang/pkg`
+- `$ ln -s linux_amd64 windows_386`
+- `$ chmod 777 linux_amd64 -R`
