@@ -1,27 +1,31 @@
 {
-  "INFO": "This config file is for testing this config file is made to test if everything works",
+  "INFO": "This config file is for testing this config file is made to test if everything works", 
+  "INFO1": "the `// ...` parts tell you the effect that it needs to give after a test",
 
-  "// programs": "( []string ) A list of programs to install using chocolatey, https://chocolatey.org/",
+  "// programs": "EFFECT: installed cpu-z and gpu-z",
   "programs": [
     "cpu-z",
     "gpu-z"
   ],
   
-  "// wallpaper": "( string ) Filename or full url, leave empty if you don't want this setting",
+  "// wallpaper": "EFFECT: testWallpaper.png set as background",
   "wallpaper": "testWallpaper.png",
   
-  "// themeColor": "( string ) Theme color in hex, leave empty if you don't want this setting",
+  "// themeColor": "EFFECT: red accent color to windows",
   "themeColor": "E81123",
   
-  "// search": "( string ) change the look of the taskbar search options: full, icon or hidden https://github.com/dennis1248/Automated-Windows-10-configuration/blob/master/docs/markdown/search.md",
+  "// search": "EFFECT: search at the left bottom of the screen is gone",
   "search": "hidden",
   
-  "// taskView": "( boolean ) show *true or hide *false the task view button, Default: true",
+  "// taskView": "EFFECT: task view button is gone at the left bottom of the screen",
   "taskView": false,
 
-  "// removeJunkApps": "( boolean ) remove *true windows junk apps NOTE: currently proberly not working or doesn't do a lot, Default: false",
+  "// removeJunkApps": "EFFECT: apps under start are gone (known working currently)",
   "removeJunkApps": true,
   
-  "// removeEdgeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
-  "removeEdgeIcon": true
+  "// removeEdgeIcon": "EFFECT: edge icon on the desktop is gone",
+  "removeEdgeIcon": true,
+
+  "// removePeople": "EFFECT: people button at the right bottom of the screen is gone",
+  "removePeople": true
 }

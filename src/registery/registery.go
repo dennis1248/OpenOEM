@@ -57,6 +57,19 @@ func SetTaskView(SetTo bool) error {
 		SetToRegistery)
 }
 
+// RemovePeople removes the people button at the right bottom of the screen
+func RemovePeople(removeBtn bool) error {
+	SetTo := "1"
+	if removeBtn {
+		SetTo = "0"
+	}
+	return setRegValue(
+		"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
+		"PeopleBand",
+		"DWORD",
+		SetTo)
+}
+
 // RemoveJunkApps Remove the windows junk apps from the start screen
 // maybe later also remove them
 // Because of bad experiance with removing apps we currently don't fully remove apps
@@ -102,6 +115,11 @@ func SetAllRegisteryItems() error {
 	err = SetTaskView(Package.TaskView)
 	if err != nil {
 		fmt.Println("can't set registery task view item, Error:", err)
+	}
+
+	err = RemovePeople(Package.RemovePeople)
+	if err != nil {
+		fmt.Println("Can't set registery people button, Error:", err)
 	}
 
 	RestartUI()

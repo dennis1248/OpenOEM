@@ -153,7 +153,7 @@ func RemoveEdgeIcon() error {
 	if err != nil {
 		return err
 	}
-	if !Package.R_EdigeIcon {
+	if !Package.RemoveEdigeIcon {
 		return nil
 	}
 

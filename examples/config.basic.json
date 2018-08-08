@@ -22,5 +22,8 @@
   "removeJunkApps": false,
   
   "// removeEdgeIcon": "( boolean ) remove *true the edge icoon on the desktop, Default: false",
-  "removeEdgeIcon": false
+  "removeEdgeIcon": false,
+
+  "// removePeople": "( boolean ) remove *true the people icon at the bottom of the screen, Default: false",
+  "removePeople": false
 }
