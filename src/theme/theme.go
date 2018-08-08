@@ -82,7 +82,14 @@ func SetTheme() error {
 	// install theme
 	_, err = commands.Run("cmd", "/c", ThemeFile)
 	if err != nil {
-		return err
+
+		fmt.Println("Error while setting theme, trying again...")
+		time.Sleep(time.Second)
+		_, err = commands.Run("cmd", "/c", ThemeFile)
+
+		if err != nil {
+			return err
+		}
 	}
 
 	// try close the settings because it pops up when installing theme
