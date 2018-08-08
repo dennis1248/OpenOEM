@@ -87,7 +87,7 @@ func OpenPackageJSON(packageJSONFile string) (out types.Config, err error) {
 // FindAndOpenPackageJSON = Find the pacakge JSON and directly open it
 func FindAndOpenPackageJSON() (out types.Config, err error) {
 	PackageName := options.GetOptions().PackageName
-	packageJSONFile, err := FindPackageJSON([]string{"./" + PackageName, "./../" + PackageName})
+	packageJSONFile, err := FindPackageJSON([]string{"./../" + PackageName, "./" + PackageName})
 	if err != nil {
 		return types.Config{}, err
 	}

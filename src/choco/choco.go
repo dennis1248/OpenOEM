@@ -10,18 +10,18 @@ import (
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/options"
 	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
 )
 
 // this file contains all the chocolatey functions
 
+// CheckForChoco checks if choco works
 func CheckForChoco() error {
 	_, err := commands.ChocoRun("-v")
 	return err
 }
 
-//check if chocolatey is installed or not:
+// InstallIfNeededChocolatey checks if chocolatey is installed or not:
 func InstallIfNeededChocolatey() error {
 	if CheckForChoco() != nil {
 		// If chocolatey is not installed run the following:
@@ -59,8 +59,8 @@ func InstallIfNeededChocolatey() error {
 	return nil
 }
 
+// InstallPkgList installs all the programs included in the config file
 func InstallPkgList(conf types.Config) {
-	// install all the programs
 
 	// setting flags
 	fmt.Println("Configuring Chocolatey..")
@@ -93,6 +93,7 @@ func InstallPkgList(conf types.Config) {
 	}
 }
 
+// PkgChecks checks if the package is installeble
 func PkgChecks(pkg string) error {
 
 	// check if the package exists in the Chocolatey repos
@@ -138,16 +139,10 @@ func PkgChecks(pkg string) error {
 	return nil
 }
 
+// InstallPackages install Chocolatey packages
 func InstallPackages() error {
-	// install Chocolatey packages
 
-	PackageName := options.GetOptions().PackageName
-	packageJSON, err := fs.FindPackageJSON([]string{"./" + PackageName, "./../" + PackageName})
-	if err != nil {
-		return err
-	}
-
-	conf, err := fs.OpenPackageJSON(packageJSON)
+	conf, err := fs.FindAndOpenPackageJSON()
 	if err != nil {
 		return err
 	}
