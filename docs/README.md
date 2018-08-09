@@ -1,5 +1,5 @@
 # Site
-The full https://winconfig.masterracegeeks.eu/ site made on top of [nodejs](https://nodejs.org/en/)
+The full https://openoem.masterracegeeks.eu/ site made on top of [nodejs](https://nodejs.org/en/)
 
 ## Setup web server
 - Install [nodejs](https://nodejs.org/en/)
