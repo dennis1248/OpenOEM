@@ -8,15 +8,15 @@ This automated tool will Install programs from chocolatey, give windows your fav
 - :heavy_check_mark: **Install** programs from **chocolatey** 
 - :heavy_check_mark: Setting **theme colour** and **wallpaper**  
 - :heavy_check_mark: Change or **remove** the **task view** and **search**
-- If you have any suggestions create an [issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues)
+- If you have any suggestions create an [issue](https://github.com/dennis1248/OpenOEM/issues)
 
 ## Requirements
 - Windows 10 x64  
 
 ## Use the program
 **!! Disclaimer !!**  
-**Do not use this application on a already set up pc it will probably break things**
-- Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
+**Do not use this application on a non-clean Windows installation, by doing so you run the risk of breaking stuff**
+- Download the latest OpenOEM Windows configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
 - Edit the config.json
 - Double click the setup.exe or save it for later use :)
@@ -33,7 +33,7 @@ Please carefully read the following before you start playing around with it;
 - Add GOPATH to the system variables
   - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
   - Linux: Execute `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
-- `$ go get github.com/dennis1248/Automated-Windows-10-configuration` or use your repo if you have forked this project
+- `$ go get github.com/dennis1248/OpenOEM` or use your repo if you have forked this project
 - The output of the last command will contain the location of the directory where the project is cloned to
 ### Compile the code
 make sure you are inside the scripts folder: `$ cd scripts`  
@@ -46,7 +46,7 @@ Exec | Output
 `$ sh buildTest.sh` | Build and add the testing wallpaper and config
   
 ### Testing
-Read: [docs/markdown/testing.md](https://github.com/dennis1248/Automated-Windows-10-configuration/blob/master/docs/markdown/testing.md)
+Read: [docs/markdown/testing.md](https://github.com/dennis1248/OpenOEM/blob/master/docs/markdown/testing.md)
 
 ### VScode and linux bugg
 if you get this error under the tab PROBLEMS:  
