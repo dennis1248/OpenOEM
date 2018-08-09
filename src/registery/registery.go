@@ -80,14 +80,14 @@ func RemoveJunkApps(allow bool) error {
 
 	// This command will not work when just executed in powershell
 	// remove the ` (escape characters) to run it
-	commands.PSRunBypass(
-		"(New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | %{$_.Verbs() } | ?{$_.Name -match 'Un.*pin from Start'} | %{$_.DoIt()}")
+	_, err := commands.PSRunBypass(
+		`(New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | %{$_.Verbs() } | ?{$_.Name -match 'Un.*pin from Start'} | %{$_.DoIt()}`)
 
 	// This command will break your system
 	// https://github.com/dennis1248/Automated-Windows-10-configuration/issues/10
 	// commands.PSRun("Get-AppXPackage | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage --quiet --no-verbose >$null 2>&1")
 
-	return nil
+	return err
 }
 
 // RestartUI restart explorer.exe a frienly way

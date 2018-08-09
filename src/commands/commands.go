@@ -1,9 +1,11 @@
 package commands
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 // Run a simple version of exec.Command + cmd.CombinedOutput
@@ -29,10 +31,13 @@ func PSRun(command string) (output []byte, err error) {
 		"-Command", command)
 }
 
-// PSRunBypass bypassess the powershell security that might stop the code from executing
-// This saves the command in a .ps1 file and then executes it
+// PSRunBypass bypassess the security that may block commands
 func PSRunBypass(command string) (output []byte, err error) {
-	filename := "commands.ps1"
+
+	filename, err := filepath.Abs("commands.ps1")
+	if err != nil {
+		return nil, err
+	}
 
 	// write the command to a powershell file
 	err = ioutil.WriteFile(filename, []byte(command), 0777)
@@ -41,15 +46,16 @@ func PSRunBypass(command string) (output []byte, err error) {
 	}
 
 	// execute the powershell command
-	out, err := Run(
-		"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-		"-NoProfile",
-		"-InputFormat", "None",
-		"-ExecutionPolicy", "Bypass",
-		"-file", filename)
+	out, err := PSRun("\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe " +
+		"-NoProfile -InputFormat None -ExecutionPolicy Bypass -file " + filename + "\"")
 
 	// remove the powershell file
 	os.Remove(filename)
 
-	return out, err
+	if err != nil {
+		fmt.Println("Failed to run command in powershell, Error:", err)
+		fmt.Println("Command output:", string(out))
+	}
+
+	return []byte{}, nil
 }
