@@ -1,4 +1,4 @@
-# Automated Windows 10 configuration
+# OpenOEM
 ![Project logo](/src/icon-small.png?raw=true "Project logo")
 
 While you drink a cup of coffee we do the rest  
