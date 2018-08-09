@@ -10,10 +10,10 @@ This automated tool will Install programs from chocolatey, give windows your fav
 - :heavy_check_mark: Change or **remove** the **task view** and **search**
 - If you have any suggestions create an [issue](https://github.com/dennis1248/OpenOEM/issues)
 
-## Requirements
+## System Requirements
 - Windows 10 x64  
 
-## Use the program
+## Using The Program
 **!! Disclaimer !!**  
 **Do not use this application on a non-clean Windows installation, by doing so you run the risk of breaking stuff**
 - Download the latest OpenOEM Windows configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
@@ -48,7 +48,7 @@ Exec | Output
 ### Testing
 Read: [docs/markdown/testing.md](https://github.com/dennis1248/OpenOEM/blob/master/docs/markdown/testing.md)
 
-### VScode and linux bugg
+### VScode And Linux Bug
 if you get this error under the tab PROBLEMS:  
 ```
 go build errors: mkdir /usr/lib/golang/pkg/windows_386/: permission denied
