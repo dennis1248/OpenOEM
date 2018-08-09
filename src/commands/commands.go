@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 // Run a simple version of exec.Command + cmd.CombinedOutput
@@ -39,23 +39,25 @@ func PSRunBypass(command string) (output []byte, err error) {
 		return nil, err
 	}
 
+	toRun := "Start-Process -WindowStyle Minimized -Wait -FilePath Powershell -ArgumentList " +
+		"\"-NoProfile\", \"-InputFormat\", \"None\", \"-ExecutionPolicy\", \"Bypass\"," +
+		"\"-Command\", \"" + strings.Replace(command, "$", "`$", -1) + "\""
+
 	// write the command to a powershell file
-	err = ioutil.WriteFile(filename, []byte(command), 0777)
+	err = ioutil.WriteFile(filename, []byte(toRun), 0777)
 	if err != nil {
 		return nil, err
 	}
 
 	// execute the powershell command
-	out, err := PSRun("\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe " +
-		"-NoProfile -InputFormat None -ExecutionPolicy Bypass -file " + filename + "\"")
+	out, err := Run("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+		"-NoProfile",
+		"-InputFormat", "None",
+		"-ExecutionPolicy", "Bypass",
+		"-file", filename)
 
 	// remove the powershell file
 	os.Remove(filename)
 
-	if err != nil {
-		fmt.Println("Failed to run command in powershell, Error:", err)
-		fmt.Println("Command output:", string(out))
-	}
-
-	return []byte{}, nil
+	return out, err
 }
