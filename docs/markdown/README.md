@@ -4,9 +4,9 @@
 While you drink a cup of coffee we do the rest  
 This automated tool will Install programs from chocolatey, give windows your favourite colour, set a wallpaper, remove annoying UI elements and much more from just a config file
 
-## What can this tool do
-- :heavy_check_mark: **Install** programs from **chocolatey** 
-- :heavy_check_mark: Setting **theme colour** and **wallpaper**  
+## What This Tool Does Exactly
+- :heavy_check_mark: **Install** programs using **chocolatey** 
+- :heavy_check_mark: Setting up **theme colour** and **wallpaper**  
 - :heavy_check_mark: Change or **remove** the **task view** and **search**
 - If you have any suggestions create an [issue](https://github.com/dennis1248/OpenOEM/issues)
 
