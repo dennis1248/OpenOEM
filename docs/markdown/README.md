@@ -19,7 +19,7 @@ This automated tool will Install programs from chocolatey, give windows your fav
 - Download the latest OpenOEM Windows configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
 - Edit the config.json
-- Double click the setup.exe or save it for later use :)
+- Double click the setup.exe or save the files for later use :)
 
 ## Development
 ### NOTES
