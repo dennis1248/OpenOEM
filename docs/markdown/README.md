@@ -16,8 +16,6 @@ This automated tool will Install programs from chocolatey, give windows your fav
 ## Use the program
 **!! Disclaimer !!**  
 **Do not use this application on a already set up pc it will probably break things**
-- Use the [winconfig tool](https://winconfig.masterracegeeks.eu/#generator)
-**OR**
 - Download the latest [release zip](https://github.com/dennis1248/Automated-Windows-10-configuration/releases)
 - Unpack the files
 - Edit the config.json
