@@ -144,6 +144,7 @@ func FinalCleanUp() {
 	RemoveEdgeIcon()
 	// in some cases the previous os.Remove doesn't work so just try it again
 	os.Remove("installTheme.theme")
+	os.Remove("commands.ps1")
 }
 
 // RemoveEdgeIcon = Remove the edge icon if specified by the config file

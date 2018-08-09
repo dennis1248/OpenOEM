@@ -22,7 +22,7 @@ func main() {
 	}
 	defer outFile.Close()
 
-	// Create a new zip archive.
+	// Create a new zip
 	w := zip.NewWriter(outFile)
 
 	// compress the zip
