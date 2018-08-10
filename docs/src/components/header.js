@@ -15,8 +15,8 @@ class Header extends React.Component {
             and fixes the garbage from Windows that no-one likes
           </p>
           <div className="buttons">
-            <a href="https://github.com/dennis1248/OpenOEM">About</a>
-            <a href="#configure">Configurator</a>
+            <a className="button" href="https://github.com/dennis1248/OpenOEM">About</a>
+            <a className="button" href="#configure">Configurator</a>
           </div>
         </div>
         <div className="side side2">

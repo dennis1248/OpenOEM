@@ -10,7 +10,11 @@ body
   overflow-x hidden
   background-color: #6492F9
 
-a, button
+a, a *
+  text-decoration: none
+  color: black
+
+a.button, button
   display inline-block
   width: auto
   padding: 4px 10px
@@ -22,6 +26,11 @@ a, button
   cursor pointer
   text-decoration: none
   transition: background-color .2s
+  font-size: 18px
+  -webkit-user-select: none        
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
   &:hover
     background-color: #4e7fed
   &:focus
@@ -44,14 +53,6 @@ a, button
   align-items: center
   flex-direction: row
   flex-wrap: wrap
-  height: 90vh
-  width: 90vw
-  position fixed
-  top: 5vh
-  left: 5vw
-  border-radius: 5px
-  overflow-y scroll
-  overflow-x hidden
   .side
     min-width: 400px
     width: 50%
@@ -84,3 +85,87 @@ a, button
       height: 250px
       width: 250px
     
+.configure
+  .head
+    display flex
+    align-items: center
+    padding: 10px
+    cursor pointer
+    &:hover
+      h2
+        text-decoration: underline
+    .icon
+      height: 30px
+      width: 30px
+      svg
+        height: 30px
+        width: 30px
+
+.step
+  padding: 20px
+  .contents
+    .bool, .options
+      display: flex
+      align-items: center
+      div
+        display: inline-block
+        padding: 1px 8px
+        box-sizing: border-box
+        border: 3px solid #6492F9
+        background-color: #ffffff
+        cursor pointer
+        -webkit-user-select: none        
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+      .selected
+        background-color: #6492F9
+        color: white
+      .last
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+      .first
+        border-top-left-radius: 5px
+        border-bottom-left-radius: 5px
+
+.search
+  .search-input
+    display flex
+    justify-content: center
+    align-self center
+    margin: 20px 0px 10px 0px
+    input 
+      width: 100%
+      max-width: 500px
+      padding: 4px 10px
+      box-sizing: border-box
+      border-bottom: 3px solid #6492f9
+      font-size: 18px
+  .output
+    display flex
+    justify-content: center
+    align-self center
+    flex-direction: row
+    flex-wrap: wrap
+    .item
+      cursor pointer
+    .row
+      max-width: 300px
+      box-sizing: border-box
+      padding: 10px
+      width: 100%
+      max-height: 60vh
+      overflow-y auto
+      overflow-x hidden
+      background-color: #eee
+      margin: 5px
+      border-radius: 5px
+
+.statusBar
+  display flex
+  justify-content: center
+  align-items center
+  .state
+    width: 100px
+    text-align: center
+      
