@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BackIcon from './svg-icons/arrow-back.js'
-import config from './../config.json'
+import config from './../../../examples/config.basic.json'
 import Step from './step.js'
 import Loadable from 'react-loadable'
 
