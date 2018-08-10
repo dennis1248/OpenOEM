@@ -1,5 +1,5 @@
 {
-  "INFO": "This is a config file made for: https://github.com/dennis1248/Automated-Windows-10-configuration",
+  "INFO": "This is a config file made for: https://github.com/dennis1248/OpenOEM",
   
   "// programs": "Check the availability, stabilaty and proper naming of your favorite applications at: https://chocolatey.org/packages",
   "programs": [
@@ -12,7 +12,7 @@
   "// themeColor": "( string ) Theme color in hex, leave empty if you don't want this setting",
   "themeColor": "0077D2",
   
-  "// search": "( string ) change the look of the taskbar search options: full, icon or hidden https://github.com/dennis1248/Automated-Windows-10-configuration/blob/master/docs/markdown/search.md",
+  "// search": "( string ) change the look of the taskbar search options: full, icon or hidden https://github.com/dennis1248/OpenOEM/blob/master/docs/markdown/search.md",
   "search": "full",
   
   "// taskView": "( boolean ) show *true or hide *false the task view button, Default: true",

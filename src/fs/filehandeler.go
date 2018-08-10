@@ -15,9 +15,9 @@ import (
 	"unicode/utf16"
 	"unsafe"
 
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/options"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
+	"github.com/dennis1248/OpenOEM/src/functions"
+	"github.com/dennis1248/OpenOEM/src/options"
+	"github.com/dennis1248/OpenOEM/src/types"
 )
 
 var printedUsingConfigFile = false
@@ -45,7 +45,7 @@ func Copy(src, dst string) error {
 
 // CheckDataFolder = check if the data folde already exsisted
 func CheckDataFolder() {
-	path := "C:\\ProgramData\\automated-Windows-10-configuration"
+	path := "C:\\ProgramData\\OpenOEM"
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.MkdirAll(path, 0777)
 	}
@@ -111,7 +111,7 @@ func GetWallpaper(Package types.Config) string {
 	oldWallpaper := strings.Trim(string(utf16.Decode(oldWallpaperPointer[:])), "\x00")
 
 	wallpaper := Package.Wallpaper
-	dst := "C:\\ProgramData\\automated-Windows-10-configuration\\wallpaper" + path.Ext(wallpaper)
+	dst := "C:\\ProgramData\\OpenOEM\\wallpaper" + path.Ext(wallpaper)
 
 	if len(wallpaper) == 0 {
 		// user doesn't want wallpaper return old wallpaper

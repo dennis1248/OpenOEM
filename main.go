@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/choco"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/registery"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/theme"
+	"github.com/dennis1248/OpenOEM/src/choco"
+	"github.com/dennis1248/OpenOEM/src/fs"
+	"github.com/dennis1248/OpenOEM/src/functions"
+	"github.com/dennis1248/OpenOEM/src/registery"
+	"github.com/dennis1248/OpenOEM/src/theme"
 )
 
 func main() {

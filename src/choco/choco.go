@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/fs"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/functions"
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/types"
+	"github.com/dennis1248/OpenOEM/src/commands"
+	"github.com/dennis1248/OpenOEM/src/fs"
+	"github.com/dennis1248/OpenOEM/src/functions"
+	"github.com/dennis1248/OpenOEM/src/types"
 )
 
 // this file contains all the chocolatey functions

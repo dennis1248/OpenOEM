@@ -9,7 +9,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/dennis1248/Automated-Windows-10-configuration/src/commands"
+	"github.com/dennis1248/OpenOEM/src/commands"
 )
 
 // Die used when the program needs to stop because of an error

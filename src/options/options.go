@@ -1,6 +1,6 @@
 package options
 
-import "github.com/dennis1248/Automated-Windows-10-configuration/src/types"
+import "github.com/dennis1248/OpenOEM/src/types"
 
 // GetOptions returns the internal options of this app
 func GetOptions() types.Options {
