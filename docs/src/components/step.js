@@ -129,7 +129,7 @@ class Step extends React.Component {
                         search: '',
                         selectedPkgs
                       })
-                      this.props.changeData(selectedPkgs)
+                      this.props.changeData(selectedPkgs.map(el => el.name))
                     }}
                     className="item"
                   >{ el.name }</div>

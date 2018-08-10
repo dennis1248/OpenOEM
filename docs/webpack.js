@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = production => ({
   entry: {
-    build: './src/index.js'
+    index: './src/index.js'
   },
   output: {
     filename: 'js/[name].js',
