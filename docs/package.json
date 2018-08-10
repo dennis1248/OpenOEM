@@ -1,14 +1,16 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "The https://dennis1248.github.io/Automated-Windows-10-configuration/ information site and configure tool for the config files",
+  "description": "The https://dennis1248.github.io/OpenOEM/ information site and configure tool for the config files",
   "main": "serve.js",
   "scripts": {
-    "start": "node serve.js"
+    "start": "node serve.js",
+    "build": "webpack --progress --display=minimal --config \"webpack.build.js\"",
+    "dev": "webpack --progress --display=minimal --config \"webpack.dev.js\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dennis1248/Automated-Windows-10-configuration.git"
+    "url": "git+https://github.com/dennis1248/OpenOEM.git"
   },
   "author": "dennis1248",
   "contributors": [
@@ -17,14 +19,29 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dennis1248/Automated-Windows-10-configuration/issues"
+    "url": "https://github.com/dennis1248/OpenOEM/issues"
   },
-  "homepage": "https://github.com/dennis1248/Automated-Windows-10-configuration/tree/master/docs#site",
+  "homepage": "https://github.com/dennis1248/OpenOEM/tree/master/docs#site",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "compression": "^1.7.3",
+    "css-loader": "^1.0.0",
     "express": "^4.16.3",
     "node-fetch": "^2.2.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "style-loader": "^0.22.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "xmldom": "^0.1.27"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
 }

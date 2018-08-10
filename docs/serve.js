@@ -7,7 +7,7 @@ const DOMParser = XmlDom.DOMParser;
 const app = express()
 const log = console.log
 
-app.use(express.static(path.join(__dirname, 'src')))
+app.use(express.static(path.join(__dirname, 'build')))
 app.use('/markdown', express.static(path.join(__dirname, 'markdown')))
 app.use(compression())
 
@@ -36,7 +36,7 @@ app.get('/search/:query', (req, res) => {
 app.get('/download/:query', (req, res) => {
   let query = req.params.query.replace('|||', '/')
   if (query.indexOf('..') == -1 && !query.replace(/\s/g, '').startsWith('/')) {
-    fetch('https://github.com/dennis1248/Automated-Windows-10-configuration/releases/download/' + query.replace(/\.\./g, ''))
+    fetch('https://github.com/dennis1248/OpenOEM/releases/download/' + query.replace(/\.\./g, ''))
     .then(r => r.buffer())
     .then(data => {
       res.setHeader("Content-type", "application/zip")

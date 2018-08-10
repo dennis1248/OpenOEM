@@ -1,0 +1,86 @@
+*
+  padding 0px
+  margin 0px
+  border 0px
+
+body
+  font-family 'Roboto', sans-serif
+  font-size 18px
+  overflow-y hidden
+  overflow-x hidden
+  background-color: #6492F9
+
+a, button
+  display inline-block
+  width: auto
+  padding: 4px 10px
+  margin: 4px
+  background-color: #6492F9
+  font-weight: bolder
+  color: white
+  border-radius: 4px
+  cursor pointer
+  text-decoration: none
+  transition: background-color .2s
+  &:hover
+    background-color: #4e7fed
+  &:focus
+    background-color: #4e7fed
+
+.part
+  background-color: white
+  height: 90vh
+  width: 90vw
+  position fixed
+  top: 5vh
+  left: 5vw
+  border-radius: 5px
+  overflow-y scroll
+  overflow-x hidden
+
+.header
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: row
+  flex-wrap: wrap
+  height: 90vh
+  width: 90vw
+  position fixed
+  top: 5vh
+  left: 5vw
+  border-radius: 5px
+  overflow-y scroll
+  overflow-x hidden
+  .side
+    min-width: 400px
+    width: 50%
+    box-sizing: border-box
+    padding: 40px
+    height: 100%
+    display: flex
+    justify-content: center
+    flex-direction: column
+  .side1
+    *
+      width: 100%
+      display inline-block
+    h1, .full-title
+      text-align: center
+    .full-title
+      padding-bottom: 20px
+      color: rgba(0,0,0,.6)
+    .intro
+      font-size: 19px
+    .buttons
+      a
+        width: auto
+  .side2
+    align-items: center
+    .icon
+      background-image: url(/icons/icon-small.png)
+      background-size: contain
+      background-repeat: no-repeat
+      height: 250px
+      width: 250px
+    

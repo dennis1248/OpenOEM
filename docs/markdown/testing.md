@@ -7,7 +7,7 @@
 ## Create a testing VM
 NOTE: For VMs i use [virtual box](https://www.virtualbox.org/)
 - Create a VM and install windows 10 (*64 bit*)
-- Add the `build` folder as shared folder (don't add the root of this repo because that will cause an issue where it reads the wrong config file ([issue](https://github.com/dennis1248/Automated-Windows-10-configuration/issues/10))) 
+- Add the `build` folder as shared folder (don't add the root of this repo because that will cause an issue where it reads the wrong config file ([issue](https://github.com/dennis1248/OpenOEM/issues/10))) 
 - Create a soft link from the `build` network folder to the desktop
 - Activate windows (if windows is not activated some things registry things might not work)
 - Make a snapshot of the machine (make sure the machine is idle because if not windows might crash later)
