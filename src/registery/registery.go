@@ -44,7 +44,7 @@ func SetSearch(setTo string) error {
 		SetToRegistery)
 }
 
-// SetTaskView set the task view icon to be visable or removed
+// SetTaskView set the task view icon to be visible or removed
 func SetTaskView(SetTo bool) error {
 	SetToRegistery := "1"
 	if !SetTo {
@@ -57,7 +57,7 @@ func SetTaskView(SetTo bool) error {
 		SetToRegistery)
 }
 
-// RemovePeople removes the people button at the right bottom of the screen
+// RemovePeople removes "People" from the taskbar
 func RemovePeople(removeBtn bool) error {
 	SetTo := "1"
 	if removeBtn {
@@ -70,27 +70,27 @@ func RemovePeople(removeBtn bool) error {
 		SetTo)
 }
 
-// RemoveJunkApps Remove the windows junk apps from the start screen
-// maybe later also remove them
-// Because of bad experiance with removing apps we currently don't fully remove apps
+// RemoveJunkApps Removes the junk apps from the start menu
+// Currently the apps stay installed, only the shortcuts are removed
+// We tried uninstalling them but it causes some serious issues
 func RemoveJunkApps(allow bool) error {
 	if !allow {
 		return nil
 	}
 
-	// This command will not work when just executed in powershell
+	// This command will not work when just executed it in the powershell
 	// remove the ` (escape characters) to run it
 	_, err := commands.PSRunBypass(
 		`(New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | %{$_.Verbs() } | ?{$_.Name -match 'Un.*pin from Start'} | %{$_.DoIt()}`)
 
-	// This command will break your system
+	// This command will break your Windows installation
 	// https://github.com/dennis1248/OpenOEM/issues/10
 	// commands.PSRun("Get-AppXPackage | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage --quiet --no-verbose >$null 2>&1")
 
 	return err
 }
 
-// RestartUI restart explorer.exe a frienly way
+// RestartUI restarts the explorer.exe in a "safe" way to avoid issues
 func RestartUI() {
 	commands.PSRun("Stop-Process -ProcessName explorer")
 }
@@ -105,22 +105,22 @@ func SetAllRegisteryItems() error {
 
 	err = RemoveJunkApps(Package.RemoveJunk)
 	if err != nil {
-		fmt.Println("can't remove apps item, Error:", err)
+		fmt.Println("Unable to remove apps item, Error:", err)
 	}
 
 	err = SetSearch(Package.Search)
 	if err != nil {
-		fmt.Println("can't set registery search item, Error:", err)
+		fmt.Println("Unable to set registery search item, Error:", err)
 	}
 
 	err = SetTaskView(Package.TaskView)
 	if err != nil {
-		fmt.Println("can't set registery task view item, Error:", err)
+		fmt.Println("Unable to set registery task view item, Error:", err)
 	}
 
 	err = RemovePeople(Package.RemovePeople)
 	if err != nil {
-		fmt.Println("Can't set registery people button, Error:", err)
+		fmt.Println("Unable to set registery people button, Error:", err)
 	}
 
 	RestartUI()

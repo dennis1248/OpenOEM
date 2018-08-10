@@ -10,9 +10,9 @@ class Header extends React.Component {
         <div className="side side1">
           <h1>OpenOEM</h1>
           <p className="intro">
-            A installer for Windows that needs no interaction.
-            It installs programs, configures Windows 
-            and fixes the garbage from Windows that no-one likes
+            A Windows configuration tool which requires no user interaction
+            It installs programs, configures Windows
+            and fixes/removes various Windows "features" that no-one likes
           </p>
           <div className="buttons">
             <a className="button" href="https://github.com/dennis1248/OpenOEM">About</a>

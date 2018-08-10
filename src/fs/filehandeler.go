@@ -43,7 +43,7 @@ func Copy(src, dst string) error {
 	return out.Close()
 }
 
-// CheckDataFolder = check if the data folde already exsisted
+// CheckDataFolder = check if the data folder already exists
 func CheckDataFolder() {
 	path := "C:\\ProgramData\\OpenOEM"
 	if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -84,7 +84,7 @@ func OpenPackageJSON(packageJSONFile string) (out types.Config, err error) {
 	return data, nil
 }
 
-// FindAndOpenPackageJSON = Find the pacakge JSON and directly open it
+// FindAndOpenPackageJSON = Find the package JSON and directly open it
 func FindAndOpenPackageJSON() (out types.Config, err error) {
 	PackageName := options.GetOptions().PackageName
 	packageJSONFile, err := FindPackageJSON([]string{"./../" + PackageName, "./" + PackageName})
@@ -147,7 +147,7 @@ func FinalCleanUp() {
 	os.Remove("commands.ps1")
 }
 
-// RemoveEdgeIcon = Remove the edge icon if specified by the config file
+// RemoveEdgeIcon = Remove the Microsoft Edge icon if specified by the config file
 func RemoveEdgeIcon() error {
 	// check if removing home icons is allowed by the config file
 	Package, err := FindAndOpenPackageJSON()
@@ -158,7 +158,7 @@ func RemoveEdgeIcon() error {
 		return nil
 	}
 
-	// get the current user's home folder and remove the edge icoon
+	// get the current user's home folder and remove the Microsoft Edge icon
 	user, err := user.Current()
 	if err != nil {
 		return err
@@ -174,7 +174,7 @@ func RemoveEdgeIcon() error {
 	return nil
 }
 
-// MakeFile a simpel wrapper around how to creat a file
+// MakeFile a simple wrapper around how to create a file
 func MakeFile(data string, filePath string) error {
 	byteData := []byte(data)
 	return ioutil.WriteFile(filePath, byteData, 0777)

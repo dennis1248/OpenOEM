@@ -12,7 +12,7 @@ import (
 	"github.com/dennis1248/OpenOEM/src/commands"
 )
 
-// Die used when the program needs to stop because of an error
+// Die used to stop the application when encountering an error
 func Die() {
 	fmt.Println("press enter to exit the application")
 	// Prevent the application from closing
@@ -36,7 +36,7 @@ func checkIfAdmin() bool {
 	return true
 }
 
-// CheckSYS check if your system is supported
+// CheckSYS check if the system is supported
 func CheckSYS() {
 	status := true
 	args := os.Args[1:]

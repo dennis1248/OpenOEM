@@ -1,7 +1,7 @@
 package types
 
 // types
-// a type pre defines what a object / array contains
+// a type pre-defines what an object / array contains
 
 // Config struct for the config files
 // Started this stuct using: https://mholt.github.io/json-to-go/

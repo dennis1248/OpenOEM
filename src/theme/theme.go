@@ -1,6 +1,6 @@
 package theme
 
-// this package sets the theme stuff
+// this package sets the user's custom theme
 
 import (
 	"fmt"
@@ -15,7 +15,7 @@ import (
 	"github.com/dennis1248/OpenOEM/src/types"
 )
 
-// Color returns a string with a hexa decimal color value suable for a .theme file
+// Color returns a string with a hexadecimal color value suable for a .theme file
 func Color(Package types.Config) string {
 	r, _ := regexp.Compile("^#?[A-Fa-f0-9]{6}$")
 	check := r.MatchString(Package.ThemeColor)
