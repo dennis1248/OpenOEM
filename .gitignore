@@ -35,6 +35,11 @@ config.example.json
 # Build js files from docs
 docs/build/js/*.js*
 
+# Block nodejs files from being added outside the docs folder
+/package.json
+/package-lock.json
+/yarn.lock
+
 # docs nodejs webserver
 logs
 *.log
