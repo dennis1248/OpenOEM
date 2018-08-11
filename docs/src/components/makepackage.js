@@ -22,7 +22,6 @@ class MKpackage extends React.Component {
   }
   makeConfig(configFromFile) {
     let config = this.props.config
-    console.log(config)
     for (const key in config) {
       if (config.hasOwnProperty(key)) {
         if (!/(\/\/)|(INFO)/.test(key) && typeof configFromFile[key] != undefined) {
@@ -30,7 +29,6 @@ class MKpackage extends React.Component {
         }
       }
     }
-    console.log(configFromFile)
     return configFromFile
   }
   runningInstaller() {
@@ -66,9 +64,6 @@ class MKpackage extends React.Component {
           let setup = data[1]
           let zip = new JSZip()
           zip.file('config.json', config)
-
-          console.log(config)
-          
           zip.file('setup.exe', setup)
           vm.props.filesToInclude.map(el => {
             zip.file(el.name, el)
