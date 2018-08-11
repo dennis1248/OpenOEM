@@ -14,7 +14,7 @@ This automated tool will Install programs from chocolatey, give windows your fav
 - Windows 10 x64  
 
 ## Using The Program
-**!! Disclaimer !!**  
+**!! Important Note !!**  
 **Do not use this application on a non-clean Windows installation, by doing so you run the risk of breaking stuff**
 ### Via the project website
 [link to the configurator](https://openoem.masterracegeeks.eu/#configure)  
