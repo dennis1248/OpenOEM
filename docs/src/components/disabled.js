@@ -7,7 +7,7 @@ class Disabled extends React.Component {
   render() {
     return (
       <div className="part header">
-        <h1>Disabled for now configure it manualy via github</h1>
+        <h3>Disabled for now configure it manualy via github</h3>
       </div>
     )
   }

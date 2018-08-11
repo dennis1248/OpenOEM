@@ -6,7 +6,7 @@ import Step from './step.js'
 import Loadable from 'react-loadable'
 
 const MKpackage = Loadable({
-  loader: () => import('./disabled.js'),
+  loader: () => import('./makepackage.js'),
   loading: () => <div className="loading"></div>,
 });
 
