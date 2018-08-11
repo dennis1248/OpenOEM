@@ -68,16 +68,16 @@ class Configure extends React.Component {
           {this.state.currentItem == this.state.items.length
             ? <div className="step">
                 <h3>Install</h3>
-                {this.state.runningInstaller ? 
+                {!this.state.runningInstaller ? 
                   <p className="inf">Press the button below to create an installer + config</p>
                 :''}
                 <div className="InstallBtn">
-                  <MKpackage 
-                    config={config}
-                    run={() => {
-                      this.setState({runningInstaller: true})
-                    }}
-                  />
+                <MKpackage 
+                  config={config}
+                  run={() => {
+                    this.setState({runningInstaller: true})
+                  }}
+                />
                 </div>
               </div>
             : <Step 
