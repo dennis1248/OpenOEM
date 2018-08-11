@@ -17,6 +17,7 @@ class Step extends React.Component {
       data: [[]]
     }
     this.updateSearchRes = this.updateSearchRes.bind(this)
+    this.fileInput = React.createRef()
   }
   updateSearchRes(event) {
     let search = event.target.value
@@ -152,6 +153,29 @@ class Step extends React.Component {
                 )}
               </div>
             </div>
+          </div>
+        : this.props.item.type == 'fileSelect' ? 
+          <div className="fileSelect">
+          <form>
+            <button
+              onClick={() => {
+                this.props.changeData('')
+                this.fileInput.current.value = null
+              }}
+            >Remove selected file</button>
+            <input 
+              id="upload" 
+              type="file"
+              accept="image/*"
+              ref={this.fileInput}
+              onInput={() => {
+                this.props.changeData(this.fileInput.current.files[0])
+              }}
+              onClick={event => { 
+                event.target.value = null
+              }}
+            />
+          </form>
           </div>
         : console.log(this.props.item.type)}
       </div>

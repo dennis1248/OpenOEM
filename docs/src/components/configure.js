@@ -19,6 +19,7 @@ class Configure extends React.Component {
       config,
       currentItem: 0,
       runningInstaller: false,
+      filesToInclude: [],
       items: [
         {
           name: 'programs',
@@ -73,7 +74,8 @@ class Configure extends React.Component {
                 :''}
                 <div className="InstallBtn">
                 <MKpackage
-                  config={config}
+                  config={this.state.config}
+                  filesToInclude={this.state.filesToInclude}
                   run={() => {
                     this.setState({runningInstaller: true})
                   }}
@@ -85,14 +87,31 @@ class Configure extends React.Component {
                 Object.assign(
                   {},
                   this.state.items[this.state.currentItem],
-                  {data: config[this.state.items[this.state.currentItem].name]}
+                  {data: this.state.config[this.state.items[this.state.currentItem].name]}
                 )
               }
               changeData={toSet => {
                 let newConfig = Object.assign(this.state.config)
-                newConfig[this.state.items[this.state.currentItem].name] = toSet
+                let filesToInclude = Object.assign(this.state.filesToInclude)
+                if (this.state.items[this.state.currentItem].type == 'fileSelect') {
+                  for (let i = 0; i < this.state.filesToInclude.length; i++) {
+                    const el = this.state.filesToInclude[i];
+                    if (el.name == newConfig[this.state.items[this.state.currentItem].name]) {
+                      this.state.filesToInclude.splice(i,1)
+                    }
+                  }
+                }
+                let newName = ''
+                if (toSet instanceof File) {
+                  filesToInclude.push(toSet)
+                  newName = toSet.name
+                } else  {
+                   newName = toSet
+                }
+                newConfig[this.state.items[this.state.currentItem].name] = newName
                 this.setState({
-                  config: newConfig
+                  config: newConfig,
+                  filesToInclude: filesToInclude
                 })
               }}
             />

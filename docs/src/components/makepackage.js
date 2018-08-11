@@ -21,7 +21,8 @@ class MKpackage extends React.Component {
     this.running = false
   }
   makeConfig(configFromFile) {
-    let config = this.state.config
+    let config = this.props.config
+    console.log(config)
     for (const key in config) {
       if (config.hasOwnProperty(key)) {
         if (!/(\/\/)|(INFO)/.test(key) && typeof configFromFile[key] != undefined) {
@@ -29,17 +30,19 @@ class MKpackage extends React.Component {
         }
       }
     }
+    console.log(configFromFile)
     return configFromFile
   }
   runningInstaller() {
-    if (!this.running) {
-      this.running = true
-      this.props.run()
-      this.setState({running: true}, () => {
+    let vm = this
+    if (!vm.running) {
+      vm.running = true
+      vm.props.run()
+      vm.setState({running: true}, () => {
         fetch('https://api.github.com/repos/dennis1248/OpenOEM/releases')
         .then(data => data.json())
         .then(output => {
-          this.setState({DownloadLatestsReleaseInfo: true})
+          vm.setState({DownloadLatestsReleaseInfo: true})
           return fetch(
             '/download/' + 
             encodeURIComponent(
@@ -53,23 +56,27 @@ class MKpackage extends React.Component {
         })
         .then(data => data.blob())
         .then(data => {
-          this.setState({DownloadLatestsReleaseZip: true})
+          vm.setState({DownloadLatestsReleaseZip: true})
           return new JSZip().loadAsync(data)
         })
-        .then(zip => {
-          return Promise.all([zip.file("config.json").async("string"), zip.file("setup.exe").async("uint8array")])
-        })
+        .then(zip => Promise.all([zip.file("config.json").async("string"), zip.file("setup.exe").async("uint8array")]))
         .then(data => {
-          this.setState({OpenZip: true})
-          let config = JSON.stringify(this.makeConfig(JSON.parse(data[0])))
+          vm.setState({OpenZip: true})
+          let config = JSON.stringify(vm.makeConfig(JSON.parse(data[0])), null, 2)
           let setup = data[1]
           let zip = new JSZip()
           zip.file('config.json', config)
+
+          console.log(config)
+          
           zip.file('setup.exe', setup)
+          vm.props.filesToInclude.map(el => {
+            zip.file(el.name, el)
+          })
           return zip.generateAsync({type:"blob"})
         })
         .then(blob => {
-          this.setState({EditZipFile: true, })
+          vm.setState({EditZipFile: true, })
           saveAs(blob, "OpenOEM.zip")
         })
         .catch(console.error)
@@ -86,10 +93,7 @@ class MKpackage extends React.Component {
         <div>{this.state.EditZipFile ? <CB /> : <CBUC />} Edit zip file</div>
         <div>{this.state.EditZipFile ? <CB /> : <CBUC />} Download zip</div>
       </div>:<button
-        onClick={() => {
-          console.log("click")
-          this.runningInstaller()
-        }}
+        onClick={() => this.runningInstaller()}
       >Create</button>
     )
   }
