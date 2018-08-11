@@ -26,32 +26,32 @@ class Configure extends React.Component {
           type: 'chocolatey-search'
         },{
           name: 'removeEdgeIcon',
-          dis: 'Remove edge icon from the start screen',
+          dis: 'Remove the Microsoft Edge icon from the start screen',
           type: 'bool'
         },{
           name: 'removeJunkApps',
-          dis: 'Remove apps from start menu (this might also for real remove apps)',
+          dis: 'Remove apps from start menu (this feature has issues, use with caution)',
           type: 'bool'
         },{
           name: 'removePeople',
-          dis: 'Remove people button at the bottom of the screen',
+          dis: 'Remove the people button from the taskbar',
           type: 'bool'
         },{
           name: 'search',
-          dis: 'Show the type of search bar at the bottom of the screen',
+          dis: 'The type of searchbar on the taskbar',
           type: 'options',
           options: ['full','icon','hidden']
         },{
           name: 'taskView',
-          dis: 'Show the task view button at the bottom of the screen',
+          dis: 'Show the task view button on the taskbar',
           type: 'bool'
         },{
           name: 'themeColor',
-          dis: 'The theme color from windows',
+          dis: 'Set the Windows theme color',
           type: 'color',
         },{
           name: 'wallpaper',
-          dis: 'Select wallpaper, select next if you don\'t want a wallpaper set',
+          dis: 'Select wallpaper, skip this if you don\'t want a wallpaper',
           type: 'fileSelect'
         }
       ]
@@ -68,11 +68,11 @@ class Configure extends React.Component {
           {this.state.currentItem == this.state.items.length
             ? <div className="step">
                 <h3>Install</h3>
-                {!this.state.runningInstaller ? 
+                {!this.state.runningInstaller ?
                   <p className="inf">Press the button below to create an installer + config</p>
                 :''}
                 <div className="InstallBtn">
-                <MKpackage 
+                <MKpackage
                   config={config}
                   run={() => {
                     this.setState({runningInstaller: true})
@@ -80,14 +80,14 @@ class Configure extends React.Component {
                 />
                 </div>
               </div>
-            : <Step 
+            : <Step
               item={
                 Object.assign(
-                  {}, 
-                  this.state.items[this.state.currentItem], 
+                  {},
+                  this.state.items[this.state.currentItem],
                   {data: config[this.state.items[this.state.currentItem].name]}
                 )
-              } 
+              }
               changeData={toSet => {
                 let newConfig = Object.assign(this.state.config)
                 newConfig[this.state.items[this.state.currentItem].name] = toSet
@@ -99,8 +99,8 @@ class Configure extends React.Component {
           }
           {!this.state.runningInstaller
             ?<div className="statusBar">
-              <button 
-                disabled={this.state.currentItem == 0} 
+              <button
+                disabled={this.state.currentItem == 0}
                 className="previous"
                 onClick={() => this.setState({
                   currentItem: this.state.currentItem - 1
@@ -109,8 +109,8 @@ class Configure extends React.Component {
               <div className="state">
                 Step <b>{this.state.currentItem + 1}</b> of <b>{this.state.items.length + 1}</b>
               </div>
-              <button 
-                disabled={this.state.currentItem == this.state.items.length} 
+              <button
+                disabled={this.state.currentItem == this.state.items.length}
                 className="next"
                 onClick={() => this.setState({
                   currentItem: this.state.currentItem + 1
