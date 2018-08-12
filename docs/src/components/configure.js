@@ -24,36 +24,44 @@ class Configure extends React.Component {
         {
           name: 'programs',
           dis: 'Select programs to install using chocolatey',
-          type: 'chocolatey-search'
+          type: 'chocolatey-search',
+          screenshot: false
         },{
           name: 'removeEdgeIcon',
           dis: 'Remove the Microsoft Edge icon from the start screen',
-          type: 'bool'
+          type: 'bool',
+          screenshot: 'edge.png'
         },{
           name: 'removeJunkApps',
           dis: 'Remove apps from start menu (this feature has issues, use with caution)',
-          type: 'bool'
+          type: 'bool',
+          screenshot: 'start-menu.png'
         },{
           name: 'removePeople',
           dis: 'Remove the people button from the taskbar',
-          type: 'bool'
+          type: 'bool',
+          screenshot: 'people.png'
         },{
           name: 'search',
           dis: 'The type of searchbar on the taskbar',
           type: 'options',
-          options: ['full','icon','hidden']
+          options: ['full','icon','hidden'],
+          screenshot: 'search.png'
         },{
           name: 'taskView',
           dis: 'Show the task view button on the taskbar',
-          type: 'bool'
+          type: 'bool',
+          screenshot: 'tasks-view.png'
         },{
           name: 'themeColor',
           dis: 'Set the Windows theme color',
           type: 'color',
+          screenshot: 'color.png'
         },{
           name: 'wallpaper',
           dis: 'Select wallpaper, skip this if you don\'t want a wallpaper',
-          type: 'fileSelect'
+          type: 'fileSelect',
+          screenshot: false
         }
       ]
     }
@@ -136,6 +144,9 @@ class Configure extends React.Component {
                 })}
               >next</button>
             </div>
+          :''}
+          {this.state.items[this.state.currentItem] && this.state.items[this.state.currentItem].screenshot ? 
+            <img className="previewImage" src={`/imgs/${this.state.items[this.state.currentItem].screenshot}`}/>
           :''}
         </div>
       </div>
