@@ -14,12 +14,13 @@ This automated tool will Install programs from chocolatey, give windows your fav
 - Windows 10 x64  
 
 ## Using The Program
-**!! Disclaimer !!**  
+**!! Important Note !!**  
 **Do not use this application on a non-clean Windows installation, by doing so you run the risk of breaking stuff**
 ### Via the project website
-[link to the configurator](https://openoem.masterracegeeks.eu/#configure)
+[link to the configurator](https://openoem.masterracegeeks.eu/#configure)  
+(when you download the zip file your browser might say it's not save, this is probably because this program changes things in the registry if you don't trust it you can take a look yourself in the code)
 ### Old way
-- Download the latest OpenOEM Windows configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
+- Download the latest OpenOEM Windows Configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
 - Edit the config.json
 - Double click the setup.exe or save the files for later use :)

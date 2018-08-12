@@ -15,7 +15,7 @@ import (
 
 func main() {
 
-	fullpath, _ := filepath.Abs("../build/auto_win_10_conf.zip")
+	fullpath, _ := filepath.Abs("../build/OpenOEM.zip")
 	outFile, err := os.Create(fullpath)
 	if err != nil {
 		log.Fatal(err)
