@@ -6,10 +6,10 @@ Please carefully read the following before you start playing around with it;
 - Do not store files or modify files in the build directory because then you will likely end up breaking everything and files might be overwritten
 ### Setup
 - install [Golang](https://golang.org/dl/)
-- `$ go get github.com/akavel/rsrc`
 - Add GOPATH to the system variables
   - Windows: Add `%USERPROFILE%\go\bin` to System Variables ([how to](https://www.java.com/en/download/help/path.xml))
-  - Linux: Execute `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && PATH=$PATH:$GOPATH/bin >> $HOME/.bashrc`
+  - Linux: Execute `$ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc && echo 'PATH=$PATH:$GOPATH/bin' >> $HOME/.bashrc`
+- `$ go get github.com/akavel/rsrc`
 - `$ go get github.com/dennis1248/OpenOEM` or use your repo if you have forked this project
 - The output of the last command will contain the location of the directory where the project is cloned to
 ### Compile the code
