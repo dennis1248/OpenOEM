@@ -28,7 +28,7 @@ class Configure extends React.Component {
           screenshot: false
         },{
           name: 'removeEdgeIcon',
-          dis: 'Remove the Microsoft Edge icon from the start screen',
+          dis: 'Remove the Microsoft Edge icon from the desktop',
           type: 'bool',
           screenshot: 'edge.png'
         },{
