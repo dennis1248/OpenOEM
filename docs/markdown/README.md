@@ -3,7 +3,7 @@
   
 OpenOEM will Install programs from the Chocolatey repositories and can make some basic tweaks such as changing the UI color, seting up a wallpaper and removing the people button among other things. Simply run the executable and walk away, it will not require your attention anymore until it is done. 
 
-You can configure OpemOEM however you want to via either [the MasterRaceGeeks website](https://openoem.masterracegeeks.eu/) or by manually editing the configuration file using a simple text editor. 
+You can configure OpemOEM however you want via either the [MasterRaceGeeks website](https://openoem.masterracegeeks.eu/) or by manually editing the configuration file using a simple text editor. 
 
 ## What This Tool Does Exactly
 - :heavy_check_mark: **Install** programs using **chocolatey** 
