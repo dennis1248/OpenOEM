@@ -1,8 +1,7 @@
 # OpenOEM
 ![Project logo](/src/icon-small.png?raw=true "Project logo")
-
-While you drink a cup of coffee we do the rest  
-This automated tool will Install programs from chocolatey, give windows your favourite colour, set a wallpaper, remove annoying UI elements and much more from just a config file
+  
+This automated tool will Install programs from the Chocolatey repositories and could make some basic tweaks such as changing the UI color, set a wallpaper and removing the people button among other things. Simply run the executable and walk away, it will not require your attention anymore until it is done. 
 
 ## What This Tool Does Exactly
 - :heavy_check_mark: **Install** programs using **chocolatey** 
