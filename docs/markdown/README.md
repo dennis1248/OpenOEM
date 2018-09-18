@@ -1,7 +1,9 @@
 # OpenOEM
 ![Project logo](/src/icon-small.png?raw=true "Project logo")
   
-This automated tool will Install programs from the Chocolatey repositories and could make some basic tweaks such as changing the UI color, set a wallpaper and removing the people button among other things. Simply run the executable and walk away, it will not require your attention anymore until it is done. 
+OpenOEM will Install programs from the Chocolatey repositories and can make some basic tweaks such as changing the UI color, seting up a wallpaper and removing the people button among other things. Simply run the executable and walk away, it will not require your attention anymore until it is done. 
+
+You can configure OpemOEM however you want to via either [the MasterRaceGeeks website](https://openoem.masterracegeeks.eu/) or by manually editing the configuration file using a simple text editor. 
 
 ## What This Tool Does Exactly
 - :heavy_check_mark: **Install** programs using **chocolatey** 
@@ -18,11 +20,11 @@ This automated tool will Install programs from the Chocolatey repositories and c
 ### Via the project website
 [link to the configurator](https://openoem.masterracegeeks.eu/#configure)  
 (when you download the zip file your browser might say it's not save, this is probably because this program changes things in the registry if you don't trust it you can take a look yourself in the code)
-### Old way
+### Via Github/Compiling from source 
 - Download the latest OpenOEM Windows Configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
 - Edit the config.json
-- Double click the setup.exe or save the files for later use :)
+- Launch the executable and/or save the file on a external drive for later use :)
 
 ## Development
 Read: [docs/markdown/development.md](https://github.com/dennis1248/OpenOEM/blob/master/docs/markdown/development.md)
