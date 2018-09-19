@@ -19,7 +19,7 @@ You can configure OpemOEM however you want via either the [MasterRaceGeeks websi
 **Do not use this application on a non-clean Windows installation, by doing so you run the risk of breaking stuff**
 ### Via the project website
 [link to the configurator](https://openoem.masterracegeeks.eu/#configure)  
-(when you download the zip file your browser might say it's not save, this is probably because this program changes things in the registry if you don't trust it you can take a look yourself in the code)
+(when you download the zip file your browser might thow a temper tantrum about the file potentially being 'unsafe', check the code and compile from source if you are paranoid)
 ### Via Github/Compiling from source 
 - Download the latest OpenOEM Windows Configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
