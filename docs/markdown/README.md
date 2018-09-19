@@ -5,6 +5,7 @@ OpenOEM will Install programs from the Chocolatey repositories and can make some
 
 You can configure OpemOEM however you want via either the [MasterRaceGeeks website](https://openoem.masterracegeeks.eu/) or by manually editing the configuration file using a simple text editor. 
 
+
 ## What This Tool Does Exactly
 - :heavy_check_mark: **Install** programs using **chocolatey** 
 - :heavy_check_mark: Setting up **theme colour** and **wallpaper**  
@@ -13,6 +14,7 @@ You can configure OpemOEM however you want via either the [MasterRaceGeeks websi
 
 ## System Requirements
 - Windows 10 x64  
+- A fast-ish internet connection  
 
 ## Using The Program
 **!! Important Note !!**  
