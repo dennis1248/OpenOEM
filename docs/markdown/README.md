@@ -22,7 +22,7 @@ You can configure OpemOEM however you want via either the [MasterRaceGeeks websi
 ### Via the project website
 [link to the configurator](https://openoem.masterracegeeks.eu/#configure)  
 (when you download the zip file your browser might thow a temper tantrum about the file potentially being 'unsafe', check the code and compile from source if you are paranoid)
-### Via Github/Compiling from source 
+### Via Github   
 - Download the latest OpenOEM Windows Configuration Tool [release zip](https://github.com/dennis1248/OpenOEM/releases)
 - Unpack the files
 - Edit the config.json
