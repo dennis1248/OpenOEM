@@ -10,9 +10,8 @@ class Header extends React.Component {
         <div className="side side1">
           <h1>OpenOEM</h1>
           <p className="intro">
-            A Windows configuration tool which requires no user interaction
-            It installs programs, configures Windows
-            and fixes/removes various Windows "features" that no-one likes
+            OpenOEM will Install programs from the Chocolatey repositories and can make some basic
+            tweaks such as changing the UI color, setting up a wallpaper and removing the people button among other things.
           </p>
           <div className="buttons">
             <a className="button" href="https://github.com/dennis1248/OpenOEM">About</a>
